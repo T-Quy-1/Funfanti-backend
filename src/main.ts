@@ -1,6 +1,7 @@
 import { NestFactory } from '@nestjs/core';
 import { ValidationPipe } from '@nestjs/common';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
+import type { Request, Response } from 'express';
 import { AppModule } from './app.module';
 
 async function bootstrap() {
@@ -32,11 +33,10 @@ async function bootstrap() {
 
   const document = SwaggerModule.createDocument(app, config);
 
-  // 3. Setup Swagger với đường dẫn 'api'
-  SwaggerModule.setup('api', app, document, {
+  // 3. Setup Swagger với đường dẫn 'docs' để tránh xung đột /api trên Vercel
+  SwaggerModule.setup('docs', app, document, {
     customSiteTitle: 'Funfanti API Docs',
-    // Thêm dòng này để fix lỗi load giao diện trên một số môi trường cloud
-    useGlobalPrefix: true,
+    jsonDocumentUrl: 'docs-json',
     swaggerOptions: {
       docExpansion: 'list',
       filter: true,
@@ -53,6 +53,12 @@ async function bootstrap() {
       .swagger-ui .info .title { color: #0f172a; }
       .swagger-ui .scheme-container { box-shadow: none; border: 1px solid #e2e8f0; border-radius: 10px; }
     `,
+  });
+
+  // Redirect /api để không bị trang trắng khi truy cập endpoint Swagger cũ.
+  const expressApp = app.getHttpAdapter().getInstance();
+  expressApp.get('/api', (_req: Request, res: Response) => {
+    res.redirect(308, '/docs/');
   });
 
   // 4. Port cho Vercel
