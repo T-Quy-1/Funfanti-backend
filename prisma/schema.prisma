@@ -1,0 +1,166 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                    String                 @id @default(uuid()) @db.Uuid
+  email                 String                 @unique
+  passwordHash          String                 @map("password_hash")
+  displayName           String                 @map("display_name")
+  avatarUrl             String?                @map("avatar_url")
+  createdAt             DateTime               @default(now()) @map("created_at")
+  updatedAt             DateTime               @updatedAt @map("updated_at")
+  
+  preference            UserPreference?
+  questionSets          QuestionSet[]
+  sessions              QuizSession[]
+  bookmarks             Bookmark[]
+  notificationSchedules NotificationSchedule[]
+
+  @@map("users")
+}
+
+model UserPreference {
+  id                  String   @id @default(uuid()) @db.Uuid
+  userId              String   @unique @map("user_id") @db.Uuid
+  theme               String   @default("system")
+  hapticsEnabled      Boolean  @default(true) @map("haptics_enabled")
+  notificationOverlay Boolean  @default(false) @map("notification_overlay")
+  lockScreenTiming    Json?    @map("lock_screen_timing")
+  updatedAt           DateTime @updatedAt @map("updated_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("user_preferences")
+}
+
+model QuestionSet {
+  id          String   @id @default(uuid()) @db.Uuid
+  creatorId   String   @map("creator_id") @db.Uuid
+  title       String
+  description String   @db.Text
+  topic       String
+  isFeatured  Boolean  @default(false) @map("is_featured")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  creator   User             @relation(fields: [creatorId], references: [id])
+  questions Question[]
+  tags      QuestionSetTag[]
+  sessions  QuizSession[]
+  bookmarks Bookmark[]
+
+  @@index([topic, isFeatured])
+  @@map("question_sets")
+}
+
+model Tag {
+  id   String @id @default(uuid()) @db.Uuid
+  name String @unique
+
+  questionSets QuestionSetTag[]
+
+  @@map("tags")
+}
+
+model QuestionSetTag {
+  questionSetId String @map("question_set_id") @db.Uuid
+  tagId         String @map("tag_id") @db.Uuid
+
+  questionSet QuestionSet @relation(fields: [questionSetId], references: [id], onDelete: Cascade)
+  tag         Tag         @relation(fields: [tagId], references: [id], onDelete: Cascade)
+
+  @@id([questionSetId, tagId])
+  @@map("question_set_tags")
+}
+
+model Question {
+  id              String   @id @default(uuid()) @db.Uuid
+  questionSetId   String   @map("question_set_id") @db.Uuid
+  text            String   @db.Text
+  mediaUrl        String?  @map("media_url")
+  explanationText String?  @map("explanation_text") @db.Text
+  orderIndex      Int      @map("order_index")
+
+  questionSet QuestionSet    @relation(fields: [questionSetId], references: [id], onDelete: Cascade)
+  choices     AnswerChoice[]
+  responses   QuestionResponse[]
+
+  @@map("questions")
+}
+
+model AnswerChoice {
+  id         String  @id @default(uuid()) @db.Uuid
+  questionId String  @map("question_id") @db.Uuid
+  text       String
+  isCorrect  Boolean @map("is_correct")
+
+  question  Question           @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  responses QuestionResponse[]
+
+  @@map("answer_choices")
+}
+
+model QuizSession {
+  id            String   @id @default(uuid()) @db.Uuid
+  userId        String   @map("user_id") @db.Uuid
+  questionSetId String   @map("question_set_id") @db.Uuid
+  totalTimeMs   Int?     @map("total_time_ms")
+  score         Int?
+  status        String   @default("IN_PROGRESS")
+  createdAt     DateTime @default(now()) @map("created_at")
+  updatedAt     DateTime @updatedAt @map("updated_at")
+
+  user        User               @relation(fields: [userId], references: [id], onDelete: Cascade)
+  questionSet QuestionSet        @relation(fields: [questionSetId], references: [id], onDelete: Cascade)
+  responses   QuestionResponse[]
+
+  @@index([userId, status])
+  @@map("quiz_sessions")
+}
+
+model QuestionResponse {
+  id               String  @id @default(uuid()) @db.Uuid
+  sessionId        String  @map("session_id") @db.Uuid
+  questionId       String  @map("question_id") @db.Uuid
+  selectedAnswerId String? @map("selected_answer_id") @db.Uuid
+  timeTakenMs      Int     @map("time_taken_ms")
+  isCorrect        Boolean @map("is_correct")
+
+  session        QuizSession   @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  question       Question      @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  selectedAnswer AnswerChoice? @relation(fields: [selectedAnswerId], references: [id], onDelete: SetNull)
+
+  @@map("question_responses")
+}
+
+model Bookmark {
+  id            String   @id @default(uuid()) @db.Uuid
+  userId        String   @map("user_id") @db.Uuid
+  questionSetId String   @map("question_set_id") @db.Uuid
+  createdAt     DateTime @default(now()) @map("created_at")
+
+  user        User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  questionSet QuestionSet @relation(fields: [questionSetId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map("bookmarks")
+}
+
+model NotificationSchedule {
+  id        String   @id @default(uuid()) @db.Uuid
+  userId    String   @map("user_id") @db.Uuid
+  dailyTime String   @map("daily_time")
+  frequency String   @default("daily")
+  isActive  Boolean  @default(true) @map("is_active")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("notification_schedules")
+}

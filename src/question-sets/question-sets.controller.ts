@@ -1,6 +1,7 @@
-import { Controller, Get, Post, Param, Query, Body } from '@nestjs/common';
-import { ApiTags, ApiOperation } from '@nestjs/swagger';
+import { Controller, Get, Post, Param, Query, Body, UseGuards } from '@nestjs/common';
+import { ApiTags, ApiOperation, ApiQuery, ApiParam, ApiResponse, ApiBearerAuth } from '@nestjs/swagger';
 import { QuestionSetsService } from './question-sets.service';
+import { QuestionSetResponseDto, QuestionSetPayloadDto, QuestionDto } from './dto/question-sets.dto';
 
 @ApiTags('Question Sets')
 @Controller('question-sets')
@@ -9,25 +10,64 @@ export class QuestionSetsController {
 
   @Get()
   @ApiOperation({ summary: 'Discover question sets with filters' })
-  async findAll(@Query() query: any) {
-    return { message: 'Find all question sets skeleton' };
+  @ApiQuery({ name: 'topic', required: false, description: 'Filter by topic' })
+  @ApiQuery({ name: 'sort', required: false, description: 'Sort order (e.g., popular, latest)' })
+  @ApiResponse({ status: 200, description: 'List of question sets.', type: [QuestionSetResponseDto] })
+  async findAll(@Query('topic') topic?: string, @Query('sort') sort?: string): Promise<QuestionSetResponseDto[]> {
+    // To be implemented by developers
+    return [{
+      id: 'dummy-id',
+      title: 'Dummy Quiz',
+      description: 'A dummy description',
+      topic: topic || 'general',
+      isFeatured: false,
+      tags: ['dummy']
+    }];
   }
 
   @Get(':id')
   @ApiOperation({ summary: 'Get question set details' })
-  async findOne(@Param('id') id: string) {
-    return { message: 'Get question set skeleton' };
+  @ApiParam({ name: 'id', description: 'Question Set ID' })
+  @ApiResponse({ status: 200, description: 'Question set metadata.', type: QuestionSetResponseDto })
+  @ApiResponse({ status: 404, description: 'Question set not found.' })
+  async findOne(@Param('id') id: string): Promise<QuestionSetResponseDto> {
+    // To be implemented by developers
+    return {
+      id,
+      title: 'Dummy Quiz',
+      description: 'A dummy description',
+      topic: 'general',
+      isFeatured: false,
+      tags: ['dummy']
+    };
   }
 
   @Get(':id/questions')
-  @ApiOperation({ summary: 'Get questions for a specific set' })
-  async getQuestions(@Param('id') id: string) {
-    return { message: 'Get questions skeleton' };
+  @ApiOperation({ summary: 'Get aggregated questions payload for a specific set' })
+  @ApiParam({ name: 'id', description: 'Question Set ID' })
+  @ApiResponse({ status: 200, description: 'Aggregated payload of questions and choices.', type: QuestionSetPayloadDto })
+  @ApiResponse({ status: 404, description: 'Question set not found.' })
+  async getQuestions(@Param('id') id: string): Promise<QuestionSetPayloadDto> {
+    // To be implemented by developers
+    return {
+      id,
+      title: 'Dummy Quiz',
+      description: 'A dummy description',
+      topic: 'general',
+      isFeatured: false,
+      tags: ['dummy'],
+      questions: []
+    };
   }
 
   @Post(':id/bookmark')
+  @ApiBearerAuth()
   @ApiOperation({ summary: 'Bookmark a question set' })
+  @ApiParam({ name: 'id', description: 'Question Set ID' })
+  @ApiResponse({ status: 201, description: 'Bookmark created.' })
+  @ApiResponse({ status: 401, description: 'Unauthorized.' })
   async bookmark(@Param('id') id: string) {
+    // To be implemented by developers
     return { message: 'Bookmark skeleton' };
   }
 }

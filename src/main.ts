@@ -25,7 +25,7 @@ async function bootstrap() {
       'Official backend API documentation for Funfanti micro-learning app.',
     )
     .setVersion('1.0.0')
-    .addTag('Questions', 'Manage quiz questions for learning sessions')
+    .addBearerAuth()
     // Thêm link server Vercel của bạn vào đây
     .addServer('https://funfanti-backend.vercel.app', 'Production server')
     .addServer('http://localhost:3000', 'Local development')
@@ -34,10 +34,10 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, config);
 
   // 3. Chỉ expose OpenAPI JSON từ Nest, UI sẽ dùng CDN để tránh thiếu asset trên Vercel
-  SwaggerModule.setup('docs', app, document, {
+  SwaggerModule.setup('api', app, document, {
     ui: false,
     raw: ['json'],
-    jsonDocumentUrl: 'docs-json',
+    jsonDocumentUrl: 'api-json',
   });
 
   const swaggerHtml = `<!DOCTYPE html>
@@ -64,7 +64,7 @@ async function bootstrap() {
   <script src="https://cdn.jsdelivr.net/npm/swagger-ui-dist@5/swagger-ui-standalone-preset.js" crossorigin></script>
   <script>
     window.ui = SwaggerUIBundle({
-      url: '/docs-json',
+      url: '/api-json',
       dom_id: '#swagger-ui',
       deepLinking: true,
       presets: [SwaggerUIBundle.presets.apis, SwaggerUIStandalonePreset],
@@ -82,16 +82,16 @@ async function bootstrap() {
 
   // Serve Swagger UI qua CDN scripts để tránh lỗi trắng trang trên Vercel.
   const expressApp = app.getHttpAdapter().getInstance();
-  expressApp.get(['/docs', '/docs/'], (_req: Request, res: Response) => {
+  expressApp.get(['/api', '/api/'], (_req: Request, res: Response) => {
     res.type('text/html').send(swaggerHtml);
   });
 
-  // Redirect /api để không bị trang trắng khi truy cập endpoint Swagger cũ.
-  expressApp.get('/api', (_req: Request, res: Response) => {
-    res.redirect(308, '/docs/');
+  // Redirect /docs to /api
+  expressApp.get('/docs', (_req: Request, res: Response) => {
+    res.redirect(308, '/api/');
   });
-  expressApp.get('/api/', (_req: Request, res: Response) => {
-    res.redirect(308, '/docs/');
+  expressApp.get('/docs/', (_req: Request, res: Response) => {
+    res.redirect(308, '/api/');
   });
 
   // 4. Port cho Vercel
