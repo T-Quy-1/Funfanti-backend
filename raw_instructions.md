@@ -13,8 +13,10 @@ Your goal is to build, maintain, and test the backend systems according to the c
 
 <tech_stack_and_standards>
 - **Framework:** NestJS. All implementations MUST follow standard NestJS conventions and dependency injection patterns.
+- **Database:** PostgreSQL with Prisma ORM.
+- **Media Storage:** Cloudinary for storing image content and assets.
 - **Architecture:** Modular design. Keep modules decoupled and self-contained for easier integration.
-- **API Standard:** RESTful API.
+- **API Standard:** RESTful API. Follow standard API design principles, while leveraging specific optimizations (like payload aggregation) when it benefits mobile/lock-screen performance.
 - **Documentation:** Swagger/OpenAPI. You MUST update Swagger specs whenever API endpoints are created or modified.
 - **Security & Validation:** Apply security best practices and strict input validation on all API endpoints.
 - **Testing Framework:** Jest.
@@ -25,24 +27,31 @@ Your goal is to build, maintain, and test the backend systems according to the c
 
 <development_workflow>
 ALWAYS adhere to the following workflow when completing tasks:
-1. **Verify Scope:** Check if the requested feature is part of the MVP (see `<mvp_features>`). If it is a Post-MVP feature, confirm with the user before proceeding.
-2. **Implement & Modularize:** Write clean, modular backend code using NestJS conventions.
+1. **Verify Scope:** Check if the requested feature aligns with the curated MVP features defined below.
+2. **Implement & Modularize:** Write clean, modular backend code using NestJS conventions. 
 3. **Document:** Ensure Swagger definitions accurately reflect request/response schemas.
 4. **Test:** You MUST write automated tests (Unit, Integration, and E2E) for every completed feature or module. Code without corresponding tests is considered incomplete.
 </development_workflow>
 
-<mvp_features>
-The current priority is the **MVP (Minimum Viable Product)**. Focus on these backend-specific features:
-1. **Account / Login System:** User registration, authentication (e.g., JWT), and basic profile management.
-2. **Question Delivery API:** Endpoints to fetch questions, their correct answers, and text explanations.
-3. **Question Sets API:** Endpoints to serve question sets so users can play immediately.
-4. **Topic Selection API:** Endpoints for the client to browse and filter question categories/subjects.
-</mvp_features>
+<system_architecture_and_mvp>
+The backend is structured into four core domains. These constitute the **Curated MVP**. While standard RESTful patterns should be followed, specific endpoints should be optimized when it benefits mobile/lock-screen performance.
 
-<post_mvp_features>
-These backend features are intentionally excluded from the MVP. Do NOT implement them unless explicitly requested:
-- User customization and preference storage API
-- CRUD APIs for users to create personal question sets
-- Sharing systems and permissions for user-created content
-- Leaderboards, scoring, and advanced gamification APIs
-</post_mvp_features>
+1. **Auth & User Profile API**
+   - **Authentication:** Standard endpoints for registration (`POST /auth/register`) and JWT-based login (`POST /auth/login`).
+   - **Profile Management:** Standard endpoints to fetch and update profile data (`GET/PUT /users/me`), handle avatar uploads (via Cloudinary), and process data deletion requests.
+   - **User Preferences & Configuration:** Endpoints to manage UI preferences (theme, haptics) and lock-screen widget settings (notification overlays, timing preferences) (e.g., `PUT /users/me/preferences`).
+
+2. **Course Discovery & Content API**
+   - **Discovery (`GET /courses`):** Handles search, topic filtering, and featured content via query parameters (e.g., `?topic=math&sort=popular`).
+   - **Course Details (`GET /courses/:id`):** Fetches course metadata, including the long-form description, tag arrays, and author/creator metadata.
+   - **Question Delivery (`GET /courses/:id/questions`):** Delivers questions, Cloudinary media URLs, correct answers, and explanation texts. Consider optimizing payload delivery (e.g., sending everything in a single payload) if it helps the mobile client provide immediate, offline-style feedback mid-quiz without network latency.
+
+3. **Quiz Session & Analytics API**
+   - **Session Submission (`POST /courses/:id/sessions`):** Receives the completed quiz payload (user answers, per-question time tracking, and total time). The backend internally handles scoring, state resets, and retry logging based on the submission.
+   - **Analytics:** Handle comparative analytics (e.g., "You scored in the top 50%"). You may optimize this by returning it directly in the submission response to save a round-trip, or use a separate endpoint if more appropriate.
+
+4. **User Engagement & Tracking API**
+   - **Activity & Progress Tracking:** Standard RESTful endpoints to fetch activity history (`GET /users/me/activity`), tracking unfinished quizzes, and completed quizzes.
+   - **Save / Bookmark System:** Endpoints to save/bookmark specific courses for later (`POST /courses/:id/bookmark`, `GET /users/me/bookmarks`).
+   - **Scheduling & Notifications:** Endpoints and backend logic to support daily scheduling, feeding the lock-screen calendar API, and triggering in-app/push notifications for engagement.
+</system_architecture_and_mvp>
