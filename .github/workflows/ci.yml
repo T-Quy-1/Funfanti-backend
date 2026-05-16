@@ -1,0 +1,68 @@
+name: Funfanti CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:15-alpine
+        env:
+          POSTGRES_USER: funfanti_user
+          POSTGRES_PASSWORD: funfanti_password
+          POSTGRES_DB: funfanti_db
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Generate Prisma Client
+        run: npx prisma generate
+
+      - name: Run Database Migrations
+        run: npx prisma migrate deploy
+        env:
+          DATABASE_URL: postgresql://funfanti_user:funfanti_password@localhost:5432/funfanti_db?schema=public
+
+      - name: Run Unit Tests
+        run: npm run test
+
+      - name: Run E2E Tests
+        run: npm run test:e2e
+        env:
+          DATABASE_URL: postgresql://funfanti_user:funfanti_password@localhost:5432/funfanti_db?schema=public
+          JWT_SECRET: test-secret
+          JWT_EXPIRATION: 1d
+          CLOUDINARY_CLOUD_NAME: mock
+          CLOUDINARY_API_KEY: mock
+          CLOUDINARY_API_SECRET: mock
+
+      - name: Coverage Check
+        run: npm run test:cov
+        env:
+          DATABASE_URL: postgresql://funfanti_user:funfanti_password@localhost:5432/funfanti_db?schema=public
+          JWT_SECRET: test-secret
+          CLOUDINARY_CLOUD_NAME: mock
+          CLOUDINARY_API_KEY: mock
+          CLOUDINARY_API_SECRET: mock
