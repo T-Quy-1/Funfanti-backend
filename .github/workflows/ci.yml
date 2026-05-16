@@ -1,5 +1,8 @@
+# This workflow defines the Continuous Integration (CI) pipeline for Funfanti.
+# It runs automated tests and checks for every push or pull request to the main branch.
 name: Funfanti CI
 
+# Define the events that trigger this workflow
 on:
   push:
     branches: [ main ]
@@ -7,9 +10,11 @@ on:
     branches: [ main ]
 
 jobs:
+  # The 'test' job handles environment setup, database initialization, and running all tests.
   test:
     runs-on: ubuntu-latest
 
+    # Spin up a sidecar container for PostgreSQL to run integration and E2E tests against.
     services:
       postgres:
         image: postgres:15-alpine
@@ -19,6 +24,7 @@ jobs:
           POSTGRES_DB: funfanti_db
         ports:
           - 5432:5432
+        # Ensure the database is ready before starting the job steps
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
@@ -26,28 +32,35 @@ jobs:
           --health-retries 5
 
     steps:
+      # Step 1: Pull the source code from the repository
       - uses: actions/checkout@v4
 
+      # Step 2: Set up the Node.js environment
       - name: Use Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
+          cache: 'npm' # Caches dependencies to speed up subsequent runs
 
+      # Step 3: Install project dependencies from package.json
       - name: Install dependencies
         run: npm install
 
+      # Step 4: Generate the Prisma client based on the schema
       - name: Generate Prisma Client
         run: npx prisma generate
 
+      # Step 5: Apply database migrations to the PostgreSQL service container
       - name: Run Database Migrations
         run: npx prisma migrate deploy
         env:
           DATABASE_URL: postgresql://funfanti_user:funfanti_password@localhost:5432/funfanti_db?schema=public
 
+      # Step 6: Run Jest unit tests (isolated logic tests)
       - name: Run Unit Tests
         run: npm run test
 
+      # Step 7: Run Jest E2E tests (testing API endpoints and database integration)
       - name: Run E2E Tests
         run: npm run test:e2e
         env:
@@ -58,6 +71,7 @@ jobs:
           CLOUDINARY_API_KEY: mock
           CLOUDINARY_API_SECRET: mock
 
+      # Step 8: Run tests with coverage reporting to ensure we meet the >70% requirement
       - name: Coverage Check
         run: npm run test:cov
         env:
