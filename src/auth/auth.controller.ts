@@ -16,11 +16,7 @@ export class AuthController {
   @ApiResponse({ status: 201, description: 'User successfully registered.', type: AuthResponseDto })
   @ApiResponse({ status: 400, description: 'Validation error or email already exists.' })
   async register(@Body() dto: RegisterDto): Promise<AuthResponseDto> {
-    // To be implemented by developers
-    return { 
-      user: { id: 'dummy-id', email: dto.email, displayName: dto.displayName },
-      accessToken: 'dummy-token' 
-    };
+    return this.authService.register(dto);
   }
 
   @Post('login')
@@ -29,10 +25,6 @@ export class AuthController {
   @ApiResponse({ status: 200, description: 'Login successful.', type: AuthResponseDto })
   @ApiResponse({ status: 401, description: 'Invalid credentials.' })
   async login(@Body() dto: LoginDto): Promise<AuthResponseDto> {
-    // To be implemented by developers
-    return { 
-      user: { id: 'dummy-id', email: dto.email },
-      accessToken: 'dummy-token' 
-    };
+    return this.authService.login(dto);
   }
 }
