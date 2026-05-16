@@ -14,15 +14,7 @@ export class QuestionSetsController {
   @ApiQuery({ name: 'sort', required: false, description: 'Sort order (e.g., popular, latest)' })
   @ApiResponse({ status: 200, description: 'List of question sets.', type: [QuestionSetResponseDto] })
   async findAll(@Query('topic') topic?: string, @Query('sort') sort?: string): Promise<QuestionSetResponseDto[]> {
-    // To be implemented by developers
-    return [{
-      id: 'dummy-id',
-      title: 'Dummy Quiz',
-      description: 'A dummy description',
-      topic: topic || 'general',
-      isFeatured: false,
-      tags: ['dummy']
-    }];
+    return this.questionSetsService.findAll(topic, sort);
   }
 
   @Get(':id')
@@ -31,15 +23,7 @@ export class QuestionSetsController {
   @ApiResponse({ status: 200, description: 'Question set metadata.', type: QuestionSetResponseDto })
   @ApiResponse({ status: 404, description: 'Question set not found.' })
   async findOne(@Param('id') id: string): Promise<QuestionSetResponseDto> {
-    // To be implemented by developers
-    return {
-      id,
-      title: 'Dummy Quiz',
-      description: 'A dummy description',
-      topic: 'general',
-      isFeatured: false,
-      tags: ['dummy']
-    };
+    return this.questionSetsService.findOne(id);
   }
 
   @Get(':id/questions')
@@ -48,16 +32,7 @@ export class QuestionSetsController {
   @ApiResponse({ status: 200, description: 'Aggregated payload of questions and choices.', type: QuestionSetPayloadDto })
   @ApiResponse({ status: 404, description: 'Question set not found.' })
   async getQuestions(@Param('id') id: string): Promise<QuestionSetPayloadDto> {
-    // To be implemented by developers
-    return {
-      id,
-      title: 'Dummy Quiz',
-      description: 'A dummy description',
-      topic: 'general',
-      isFeatured: false,
-      tags: ['dummy'],
-      questions: []
-    };
+    return this.questionSetsService.getQuestions(id);
   }
 
   @Post(':id/bookmark')
