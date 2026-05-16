@@ -1,0 +1,36 @@
+services:
+  db:
+    image: postgres:15-alpine
+    container_name: funfanti_db
+    restart: always
+    environment:
+      POSTGRES_USER: ${DATABASE_USER:-funfanti_user}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD:-funfanti_password}
+      POSTGRES_DB: ${DATABASE_NAME:-funfanti_db}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: development # Use the development stage
+    container_name: funfanti_app
+    restart: always
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    command: npm run start:dev # Enable watch mode for hot reloading
+    volumes:
+      - .:/app # Mount entire project directory
+      - /app/node_modules # Preserve container's node_modules (anonymous volume)
+    env_file:
+      - .env
+    environment:
+      DATABASE_URL: postgresql://${DATABASE_USER:-funfanti_user}:${DATABASE_PASSWORD:-funfanti_password}@db:5432/${DATABASE_NAME:-funfanti_db}?schema=public
+
+volumes:
+  postgres_data:
