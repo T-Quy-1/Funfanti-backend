@@ -106,6 +106,7 @@ erDiagram
         string title
         text description
         string topic
+        string media_url "Cloudinary URL"
         boolean is_featured
         datetime created_at
         datetime updated_at

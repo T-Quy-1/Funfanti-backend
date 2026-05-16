@@ -20,6 +20,7 @@ export class QuestionSetsController {
       title: 'Dummy Quiz',
       description: 'A dummy description',
       topic: topic || 'general',
+      mediaUrl: 'https://res.cloudinary.com/demo/image/upload/v1612345678/sample.jpg',
       isFeatured: false,
       tags: ['dummy']
     }];
@@ -37,6 +38,7 @@ export class QuestionSetsController {
       title: 'Dummy Quiz',
       description: 'A dummy description',
       topic: 'general',
+      mediaUrl: 'https://res.cloudinary.com/demo/image/upload/v1612345678/sample.jpg',
       isFeatured: false,
       tags: ['dummy']
     };
@@ -54,6 +56,7 @@ export class QuestionSetsController {
       title: 'Dummy Quiz',
       description: 'A dummy description',
       topic: 'general',
+      mediaUrl: 'https://res.cloudinary.com/demo/image/upload/v1612345678/sample.jpg',
       isFeatured: false,
       tags: ['dummy'],
       questions: []

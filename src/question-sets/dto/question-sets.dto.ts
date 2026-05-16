@@ -44,6 +44,9 @@ export class QuestionSetResponseDto {
   @ApiProperty({ example: 'geography' })
   topic!: string;
 
+  @ApiProperty({ example: 'https://res.cloudinary.com/.../image.jpg', required: false })
+  mediaUrl?: string;
+
   @ApiProperty({ example: true })
   isFeatured!: boolean;
 
