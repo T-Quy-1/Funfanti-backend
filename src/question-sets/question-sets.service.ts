@@ -111,6 +111,23 @@ export class QuestionSetsService {
   }
 
   async bookmark(userId: string, questionSetId: string) {
-    // To be implemented
+    const qs = await this.prisma.questionSet.findUnique({ where: { id: questionSetId } });
+    if (!qs) {
+      throw new NotFoundException('Question set not found');
+    }
+
+    const existingBookmark = await this.prisma.bookmark.findFirst({
+      where: { userId, questionSetId }
+    });
+
+    if (existingBookmark) {
+      return { message: 'Question set is already bookmarked' };
+    }
+
+    await this.prisma.bookmark.create({
+      data: { userId, questionSetId }
+    });
+
+    return { message: 'Bookmark created successfully' };
   }
 }

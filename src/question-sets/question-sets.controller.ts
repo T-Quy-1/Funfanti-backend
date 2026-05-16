@@ -1,12 +1,16 @@
 import { Controller, Get, Post, Param, Query, Body, UseGuards } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiQuery, ApiParam, ApiResponse, ApiBearerAuth } from '@nestjs/swagger';
 import { QuestionSetsService } from './question-sets.service';
+import { PrismaService } from '../common/prisma.service';
 import { QuestionSetResponseDto, QuestionSetPayloadDto, QuestionDto } from './dto/question-sets.dto';
 
 @ApiTags('Question Sets')
 @Controller('question-sets')
 export class QuestionSetsController {
-  constructor(private readonly questionSetsService: QuestionSetsService) {}
+  constructor(
+    private readonly questionSetsService: QuestionSetsService,
+    private readonly prisma: PrismaService
+  ) {}
 
   @Get()
   @ApiOperation({ summary: 'Discover question sets with filters' })
@@ -42,7 +46,12 @@ export class QuestionSetsController {
   @ApiResponse({ status: 201, description: 'Bookmark created.' })
   @ApiResponse({ status: 401, description: 'Unauthorized.' })
   async bookmark(@Param('id') id: string) {
-    // To be implemented by developers
-    return { message: 'Bookmark skeleton' };
+    // TEMPORARY: Mock authenticated user until AuthGuard is ready
+    const user = await this.prisma.user.findFirst();
+    if (!user) {
+      throw new Error('No mock user found in DB');
+    }
+
+    return this.questionSetsService.bookmark(user.id, id);
   }
 }
