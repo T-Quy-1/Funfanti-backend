@@ -23,7 +23,7 @@ services:
       - "3000:3000"
     depends_on:
       - db
-    command: npx nodemon --watch src --ext ts --exec "npm run start:dev" --legacy-watch # Use Nodemon for ultra-reliable watching on Windows
+    command: sh -c "npx prisma migrate deploy && npx prisma db seed && npx nodemon --watch src --ext ts --exec \"npm run start:dev\" --legacy-watch"
     volumes:
       - .:/app # Mount entire project directory
       - /app/node_modules # Preserve container's node_modules (anonymous volume)

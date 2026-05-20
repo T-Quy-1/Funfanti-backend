@@ -1,7 +1,35 @@
-import { Controller, Get, Post, Param, Query, Body, UseGuards } from '@nestjs/common';
-import { ApiTags, ApiOperation, ApiQuery, ApiParam, ApiResponse, ApiBearerAuth } from '@nestjs/swagger';
+import {
+  Controller,
+  Get,
+  Post,
+  Delete,
+  Param,
+  Query,
+  UseGuards,
+  ParseUUIDPipe,
+} from '@nestjs/common';
+import {
+  ApiTags,
+  ApiOperation,
+  ApiQuery,
+  ApiParam,
+  ApiResponse,
+  ApiBearerAuth,
+} from '@nestjs/swagger';
 import { QuestionSetsService } from './question-sets.service';
-import { QuestionSetResponseDto, QuestionSetPayloadDto, QuestionDto } from './dto/question-sets.dto';
+import {
+  BookmarkMutationResponseDto,
+  MessageResponseDto,
+  QuestionSetPayloadDto,
+  QuestionSetResponseDto,
+} from './dto/question-sets.dto';
+import { QueryQuestionSetsDto } from './dto/query-question-sets.dto';
+import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
+import { CurrentUser } from '../auth/decorators/current-user.decorator';
+
+type AuthenticatedUser = {
+  id: string;
+};
 
 @ApiTags('Question Sets')
 @Controller('question-sets')
@@ -11,66 +39,99 @@ export class QuestionSetsController {
   @Get()
   @ApiOperation({ summary: 'Discover question sets with filters' })
   @ApiQuery({ name: 'topic', required: false, description: 'Filter by topic' })
-  @ApiQuery({ name: 'sort', required: false, description: 'Sort order (e.g., popular, latest)' })
-  @ApiResponse({ status: 200, description: 'List of question sets.', type: [QuestionSetResponseDto] })
-  async findAll(@Query('topic') topic?: string, @Query('sort') sort?: string): Promise<QuestionSetResponseDto[]> {
-    // To be implemented by developers
-    return [{
-      id: 'dummy-id',
-      title: 'Dummy Quiz',
-      description: 'A dummy description',
-      topic: topic || 'general',
-      mediaUrl: 'https://res.cloudinary.com/demo/image/upload/v1612345678/sample.jpg',
-      isFeatured: false,
-      tags: ['dummy']
-    }];
+  @ApiQuery({
+    name: 'sort',
+    required: false,
+    description: 'Sort order (popular, latest)',
+  })
+  @ApiQuery({
+    name: 'isFeatured',
+    required: false,
+    description: 'Filter featured content',
+  })
+  @ApiQuery({
+    name: 'page',
+    required: false,
+    description: 'Page number (default: 1)',
+  })
+  @ApiQuery({
+    name: 'limit',
+    required: false,
+    description: 'Items per page (default: 20, max: 100)',
+  })
+  @ApiResponse({
+    status: 200,
+    description: 'List of question sets.',
+    type: [QuestionSetResponseDto],
+  })
+  async findAll(@Query() query: QueryQuestionSetsDto) {
+    return this.questionSetsService.findAll(query);
   }
 
   @Get(':id')
   @ApiOperation({ summary: 'Get question set details' })
   @ApiParam({ name: 'id', description: 'Question Set ID' })
-  @ApiResponse({ status: 200, description: 'Question set metadata.', type: QuestionSetResponseDto })
+  @ApiResponse({
+    status: 200,
+    description: 'Question set metadata.',
+    type: QuestionSetResponseDto,
+  })
   @ApiResponse({ status: 404, description: 'Question set not found.' })
-  async findOne(@Param('id') id: string): Promise<QuestionSetResponseDto> {
-    // To be implemented by developers
-    return {
-      id,
-      title: 'Dummy Quiz',
-      description: 'A dummy description',
-      topic: 'general',
-      mediaUrl: 'https://res.cloudinary.com/demo/image/upload/v1612345678/sample.jpg',
-      isFeatured: false,
-      tags: ['dummy']
-    };
+  async findOne(@Param('id', ParseUUIDPipe) id: string) {
+    return this.questionSetsService.findOne(id);
   }
 
   @Get(':id/questions')
-  @ApiOperation({ summary: 'Get aggregated questions payload for a specific set' })
+  @ApiOperation({
+    summary: 'Get aggregated questions payload for a specific set',
+  })
   @ApiParam({ name: 'id', description: 'Question Set ID' })
-  @ApiResponse({ status: 200, description: 'Aggregated payload of questions and choices.', type: QuestionSetPayloadDto })
+  @ApiResponse({
+    status: 200,
+    description: 'Aggregated payload of questions and choices.',
+    type: QuestionSetPayloadDto,
+  })
   @ApiResponse({ status: 404, description: 'Question set not found.' })
-  async getQuestions(@Param('id') id: string): Promise<QuestionSetPayloadDto> {
-    // To be implemented by developers
-    return {
-      id,
-      title: 'Dummy Quiz',
-      description: 'A dummy description',
-      topic: 'general',
-      mediaUrl: 'https://res.cloudinary.com/demo/image/upload/v1612345678/sample.jpg',
-      isFeatured: false,
-      tags: ['dummy'],
-      questions: []
-    };
+  async getQuestions(@Param('id', ParseUUIDPipe) id: string) {
+    return this.questionSetsService.getQuestions(id);
   }
 
   @Post(':id/bookmark')
+  @UseGuards(JwtAuthGuard)
   @ApiBearerAuth()
   @ApiOperation({ summary: 'Bookmark a question set' })
   @ApiParam({ name: 'id', description: 'Question Set ID' })
-  @ApiResponse({ status: 201, description: 'Bookmark created.' })
+  @ApiResponse({
+    status: 201,
+    description: 'Bookmark created.',
+    type: BookmarkMutationResponseDto,
+  })
   @ApiResponse({ status: 401, description: 'Unauthorized.' })
-  async bookmark(@Param('id') id: string) {
-    // To be implemented by developers
-    return { message: 'Bookmark skeleton' };
+  @ApiResponse({ status: 404, description: 'Question set not found.' })
+  @ApiResponse({ status: 409, description: 'Already bookmarked.' })
+  async bookmark(
+    @CurrentUser() user: AuthenticatedUser,
+    @Param('id', ParseUUIDPipe) id: string,
+  ) {
+    return this.questionSetsService.bookmark(user.id, id);
+  }
+
+  @Delete(':id/bookmark')
+  @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth()
+  @ApiOperation({ summary: 'Remove bookmark from a question set' })
+  @ApiParam({ name: 'id', description: 'Question Set ID' })
+  @ApiResponse({
+    status: 200,
+    description: 'Bookmark removed.',
+    type: MessageResponseDto,
+  })
+  @ApiResponse({ status: 401, description: 'Unauthorized.' })
+  @ApiResponse({ status: 404, description: 'Bookmark not found.' })
+  async removeBookmark(
+    @CurrentUser() user: AuthenticatedUser,
+    @Param('id', ParseUUIDPipe) id: string,
+  ) {
+    return this.questionSetsService.removeBookmark(user.id, id);
   }
 }

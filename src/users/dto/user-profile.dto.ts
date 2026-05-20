@@ -11,7 +11,7 @@ export class UserPreferenceDto {
   notificationOverlay!: boolean;
 
   @ApiProperty({ required: false })
-  lockScreenTiming?: any;
+  lockScreenTiming?: unknown;
 }
 
 export class UserProfileDto {
@@ -24,9 +24,17 @@ export class UserProfileDto {
   @ApiProperty({ example: 'John Doe', required: false })
   displayName?: string;
 
-  @ApiProperty({ example: 'https://res.cloudinary.com/.../avatar.jpg', required: false })
+  @ApiProperty({
+    example: 'https://res.cloudinary.com/.../avatar.jpg',
+    required: false,
+  })
   avatarUrl?: string;
 
   @ApiProperty({ type: UserPreferenceDto, required: false })
   preference?: UserPreferenceDto;
+}
+
+export class UserDeletionResponseDto {
+  @ApiProperty({ example: 'User account deleted successfully' })
+  message!: string;
 }
