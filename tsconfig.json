@@ -16,6 +16,13 @@
     "noImplicitAny": false,
     "strictBindCallApply": false,
     "forceConsistentCasingInFileNames": false,
-    "noFallthroughCasesInSwitch": false
-  }
+    "noFallthroughCasesInSwitch": false,
+    "esModuleInterop": true,
+    
+    /* Add this to explicitly tell VS Code to load Jest and Node definitions */
+    "types": ["jest", "node", "multer"]
+  },
+  /* Ensure VS Code includes both your source code and your test files */
+  "include": ["src/**/*", "test/**/*", "**/*.spec.ts", "**/*.test.ts"],
+  "exclude": ["node_modules", "dist"]
 }
