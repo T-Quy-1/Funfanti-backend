@@ -9,12 +9,13 @@ COPY package*.json ./
 COPY prisma ./prisma/
 
 RUN npm install
-RUN npx prisma generate
+RUN npx prisma generate 
+# Generate Prisma client during build time to avoid issues in production with missing generated files
 
 # Stage 2: Development
 FROM base AS development
 COPY . .
-# We use command in docker-compose for dev mode
+# We use command in docker-compose for dev mode (when we start the container)
 CMD ["npm", "run", "start:dev"]
 
 # Stage 3: Build for Production
