@@ -56,6 +56,12 @@ jobs:
         env:
           DATABASE_URL: postgresql://funfanti_user:funfanti_password@localhost:5432/funfanti_db?schema=public
 
+      # Step 5.5: Seed database with initial mock content
+      - name: Seed Database
+        run: npx prisma db seed
+        env:
+          DATABASE_URL: postgresql://funfanti_user:funfanti_password@localhost:5432/funfanti_db?schema=public
+
       # Step 6: Run Jest unit tests (isolated logic tests)
       - name: Run Unit Tests
         run: npm run test
