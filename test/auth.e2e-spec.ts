@@ -27,15 +27,18 @@ describe('AuthController (e2e)', () => {
     await app.close();
   });
 
-  describe('/auth/register (POST)', () => {
-    it('should register a new user', async () => {
-      const email = `test-e2e-${Date.now()}@example.com`;
+  describe('Authentication Flow', () => {
+    const email = `test-e2e-${Date.now()}@example.com`;
+    const password = 'Password123!';
+    const displayName = 'E2E Flow User';
+
+    it('should register a new user successfully', async () => {
       const response = await request(app.getHttpServer())
         .post('/auth/register')
         .send({
           email,
-          password: 'Password123!',
-          displayName: 'E2E Test User',
+          password,
+          displayName,
         })
         .expect(201);
 
@@ -43,48 +46,18 @@ describe('AuthController (e2e)', () => {
       expect(response.body.user.email).toBe(email);
     });
 
-    it('should fail if email already exists', async () => {
-      const email = `test-duplicate@example.com`;
-      
-      // Ensure user exists
-      await prisma.user.upsert({
-        where: { email },
-        update: {},
-        create: {
-          email,
-          passwordHash: 'dummy',
-          displayName: 'Existing User',
-          preference: { create: {} }
-        }
-      });
-
+    it('should fail to register if the email already exists', async () => {
       await request(app.getHttpServer())
         .post('/auth/register')
         .send({
           email,
           password: 'Password123!',
-          displayName: 'New User',
+          displayName: 'Duplicate User',
         })
         .expect(409);
     });
-  });
 
-  describe('/auth/login (POST)', () => {
-    const email = `login-test@example.com`;
-    const password = 'Password123!';
-
-    beforeAll(async () => {
-      // Register user manually for login test
-      await request(app.getHttpServer())
-        .post('/auth/register')
-        .send({
-          email,
-          password,
-          displayName: 'Login User',
-        });
-    });
-
-    it('should login successfully', async () => {
+    it('should login successfully with the registered credentials', async () => {
       const response = await request(app.getHttpServer())
         .post('/auth/login')
         .send({
@@ -96,7 +69,7 @@ describe('AuthController (e2e)', () => {
       expect(response.body).toHaveProperty('accessToken');
     });
 
-    it('should fail with wrong password', async () => {
+    it('should fail to login with a wrong password', async () => {
       await request(app.getHttpServer())
         .post('/auth/login')
         .send({

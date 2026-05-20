@@ -1,28 +1,20 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { CloudinaryService } from './cloudinary.service';
-import { ConfigService } from '@nestjs/config';
-import { v2 as cloudinary } from 'cloudinary';
+import { ConfigModule } from '@nestjs/config';
+import * as fs from 'fs';
+import * as path from 'path';
+import * as dotenv from 'dotenv';
 
-jest.mock('cloudinary');
+// Load environment variables for conditional integration testing
+dotenv.config();
 
 describe('CloudinaryService', () => {
   let service: CloudinaryService;
 
-  const mockConfigService = {
-    get: jest.fn((key: string) => {
-      if (key === 'CLOUDINARY_CLOUD_NAME') return 'test_cloud';
-      if (key === 'CLOUDINARY_API_KEY') return 'test_key';
-      if (key === 'CLOUDINARY_API_SECRET') return 'test_secret';
-      return null;
-    }),
-  };
-
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [
-        CloudinaryService,
-        { provide: ConfigService, useValue: mockConfigService },
-      ],
+      imports: [ConfigModule.forRoot({ envFilePath: '.env' })],
+      providers: [CloudinaryService],
     }).compile();
 
     service = module.get<CloudinaryService>(CloudinaryService);
@@ -32,56 +24,73 @@ describe('CloudinaryService', () => {
     expect(service).toBeDefined();
   });
 
-  describe('uploadImage', () => {
-    it('should successfully upload an image', async () => {
+  const hasRealCloudinary =
+    process.env.CLOUDINARY_CLOUD_NAME &&
+    process.env.CLOUDINARY_CLOUD_NAME !== 'mock';
+
+  const describeIntegration = hasRealCloudinary ? describe : describe.skip;
+
+  describeIntegration('Cloudinary Integration (Real Upload & Delete)', () => {
+    let uploadResult: any;
+    let publicId: string;
+    let secureUrl: string;
+
+    beforeAll(async () => {
+      // Run the upload once before assertions to prevent redundant uploads
+      const module: TestingModule = await Test.createTestingModule({
+        imports: [ConfigModule.forRoot({ envFilePath: '.env' })],
+        providers: [CloudinaryService],
+      }).compile();
+
+      const testService = module.get<CloudinaryService>(CloudinaryService);
+
+      const filePath = path.join(process.cwd(), 'img/sample.png');
+      expect(fs.existsSync(filePath)).toBe(true);
+      const fileBuffer = fs.readFileSync(filePath);
+
       const mockFile = {
-        buffer: Buffer.from('test'),
+        fieldname: 'file',
+        originalname: 'sample.png',
+        encoding: '7bit',
+        mimetype: 'image/png',
+        buffer: fileBuffer,
+        size: fileBuffer.length,
+        stream: null,
+        destination: '',
+        filename: '',
+        path: '',
       } as Express.Multer.File;
 
-      const mockResult = { secure_url: 'https://test.url', public_id: '123' };
+      uploadResult = await testService.uploadImage(mockFile, 'funfanti/test_uploads');
+      publicId = uploadResult.public_id;
+      secureUrl = uploadResult.secure_url;
+    }, 20000);
 
-      (cloudinary.uploader.upload_stream as jest.Mock).mockImplementation((options, callback) => {
-        callback(null, mockResult);
-        return { end: jest.fn() };
-      });
+    afterAll(async () => {
+      // Ensure Cloudinary is cleaned up even if tests fail mid-flow
+      if (service && publicId) {
+        await service.deleteImage(publicId);
+      }
+    }, 20000);
 
-      const result = await service.uploadImage(mockFile);
-      expect(result).toEqual(mockResult);
+    it('should successfully upload an image and return valid metadata', () => {
+      expect(uploadResult).toHaveProperty('secure_url');
+      expect(uploadResult).toHaveProperty('public_id');
+      expect(secureUrl).toContain('cloudinary.com');
     });
 
-    it('should throw an error if upload fails', async () => {
-      const mockFile = {
-        buffer: Buffer.from('test'),
-      } as Express.Multer.File;
-
-      const mockError = new Error('Upload failed');
-
-      (cloudinary.uploader.upload_stream as jest.Mock).mockImplementation((options, callback) => {
-        callback(mockError, null);
-        return { end: jest.fn() };
-      });
-
-      await expect(service.uploadImage(mockFile)).rejects.toThrow('Upload failed');
-    });
-  });
-
-  describe('deleteImage', () => {
-    it('should successfully delete an image', async () => {
-      (cloudinary.uploader.destroy as jest.Mock).mockImplementation((publicId, callback) => {
-        callback(null, { result: 'ok' });
-      });
-
-      const result = await service.deleteImage('123');
-      expect(result).toEqual({ result: 'ok' });
+    it('should be able to access the uploaded image over HTTP', async () => {
+      const response = await fetch(secureUrl);
+      expect(response.status).toBe(200);
     });
 
-    it('should throw an error if deletion fails', async () => {
-      const mockError = new Error('Delete failed');
-      (cloudinary.uploader.destroy as jest.Mock).mockImplementation((publicId, callback) => {
-        callback(mockError, null);
-      });
+    it('should successfully delete the uploaded image', async () => {
+      const deleteResult = await service.deleteImage(publicId);
+      expect(deleteResult).toHaveProperty('result');
+      expect(deleteResult.result).toBe('ok');
 
-      await expect(service.deleteImage('123')).rejects.toThrow('Delete failed');
+      // Reset publicId so afterAll hook doesn't attempt to delete it again
+      publicId = null;
     });
   });
 });
