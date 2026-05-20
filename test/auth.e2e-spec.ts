@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { INestApplication, ValidationPipe } from '@nestjs/common';
-import * as request from 'supertest';
+import request from 'supertest';
 import { AppModule } from './../src/auth/../../src/app.module';
 import { PrismaService } from './../src/common/prisma.service';
 
@@ -22,13 +22,13 @@ describe('AuthController (e2e)', () => {
   afterAll(async () => {
     // Cleanup test data
     await prisma.user.deleteMany({
-      where: { email: { contains: 'test-e2e' } },
+      where: { email: { contains: 'test-e2e-auth' } },
     });
     await app.close();
   });
 
   describe('Authentication Flow', () => {
-    const email = `test-e2e-${Date.now()}@example.com`;
+    const email = `test-e2e-auth-${Date.now()}@example.com`;
     const password = 'Password123!';
     const displayName = 'E2E Flow User';
 
@@ -64,7 +64,7 @@ describe('AuthController (e2e)', () => {
           email,
           password,
         })
-        .expect(200); 
+        .expect(200);
 
       expect(response.body).toHaveProperty('accessToken');
     });
