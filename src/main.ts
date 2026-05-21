@@ -26,8 +26,8 @@ async function bootstrap() {
     )
     .setVersion('1.0.0')
     .addBearerAuth()
-    // Thêm link server Vercel của bạn vào đây
-    .addServer('https://funfanti-backend.vercel.app', 'Production server')
+    // Railway will host the actual backend logic and DB
+    .addServer('https://[YOUR-RAILWAY-APP-NAME].up.railway.app', 'Railway Production Server')
     .addServer('http://localhost:3000', 'Local development')
     .build();
 
