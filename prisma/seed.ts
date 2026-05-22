@@ -68,6 +68,12 @@ async function main() {
     create: { name: 'General' },
   });
 
+  const historyTag = await prisma.tag.upsert({
+    where: { name: 'History' },
+    update: {},
+    create: { name: 'History' },
+  });
+
   // 4. Create Question Sets from JSON files
   const questionSetsDir = path.join(__dirname, '../scripts/question_sets');
   if (fs.existsSync(questionSetsDir)) {

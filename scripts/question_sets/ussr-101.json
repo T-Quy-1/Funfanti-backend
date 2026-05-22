@@ -1,4 +1,5 @@
 {
+  "id": "f5d6c7b8-a90b-4cde-b321-123456789abc",
   "creatorEmail": "creator@example.com",
   "title": "USSR 101",
   "description": "Learn about the history of the USSR.",
@@ -12,691 +13,691 @@
   ],
   "questions": [
     {
-      "text": "Historical question 1 about the USSR?",
-      "explanationText": "Historical explanation 1.",
+      "text": "Which event in 1917 led to the fall of the Russian Provisional Government and the rise of the Bolsheviks?",
+      "explanationText": "The October Revolution (also known as the Bolshevik Revolution), led by Vladimir Lenin, overthrew the Russian Provisional Government in 1917.",
       "orderIndex": 1,
       "answers": [
         {
-          "text": "Fact A",
+          "text": "The February Revolution",
+          "isCorrect": false
+        },
+        {
+          "text": "The October Revolution",
           "isCorrect": true
         },
         {
-          "text": "Fact B",
+          "text": "The Decembrist Revolt",
           "isCorrect": false
         },
         {
-          "text": "Fact C",
-          "isCorrect": false
-        },
-        {
-          "text": "Fact D",
+          "text": "The Kronstadt Rebellion",
           "isCorrect": false
         }
       ]
     },
     {
-      "text": "Historical question 2 about the USSR?",
-      "explanationText": "Historical explanation 2.",
+      "text": "Who was the first leader and founder of the Soviet Union (USSR)?",
+      "explanationText": "Vladimir Lenin was the founder of the Bolshevik party and the first head of state of the Soviet Union, established in 1922.",
       "orderIndex": 2,
       "answers": [
         {
-          "text": "Fact A",
+          "text": "Joseph Stalin",
+          "isCorrect": false
+        },
+        {
+          "text": "Vladimir Lenin",
           "isCorrect": true
         },
         {
-          "text": "Fact B",
+          "text": "Leon Trotsky",
           "isCorrect": false
         },
         {
-          "text": "Fact C",
-          "isCorrect": false
-        },
-        {
-          "text": "Fact D",
+          "text": "Nikita Khrushchev",
           "isCorrect": false
         }
       ]
     },
     {
-      "text": "Historical question 3 about the USSR?",
-      "explanationText": "Historical explanation 3.",
+      "text": "What was the official name of the secret police established by the Bolsheviks in December 1917 to combat counter-revolution?",
+      "explanationText": "The Cheka (All-Russian Extraordinary Commission) was the first Soviet state security organization, founded by Felix Dzerzhinsky.",
       "orderIndex": 3,
       "answers": [
         {
-          "text": "Fact A",
+          "text": "KGB",
+          "isCorrect": false
+        },
+        {
+          "text": "Cheka",
           "isCorrect": true
         },
         {
-          "text": "Fact B",
+          "text": "NKVD",
           "isCorrect": false
         },
         {
-          "text": "Fact C",
-          "isCorrect": false
-        },
-        {
-          "text": "Fact D",
+          "text": "Okhrana",
           "isCorrect": false
         }
       ]
     },
     {
-      "text": "Historical question 4 about the USSR?",
-      "explanationText": "Historical explanation 4.",
+      "text": "Which treaty did Bolshevik Russia sign in 1918 to officially end its participation in World War I?",
+      "explanationText": "The Treaty of Brest-Litovsk was signed between Bolshevik Russia and the Central Powers, withdrawing Russia from WWI at the cost of significant territory.",
       "orderIndex": 4,
       "answers": [
         {
-          "text": "Fact A",
+          "text": "Treaty of Versailles",
+          "isCorrect": false
+        },
+        {
+          "text": "Treaty of Brest-Litovsk",
           "isCorrect": true
         },
         {
-          "text": "Fact B",
+          "text": "Treaty of Trianon",
           "isCorrect": false
         },
         {
-          "text": "Fact C",
-          "isCorrect": false
-        },
-        {
-          "text": "Fact D",
+          "text": "Treaty of Rapallo",
           "isCorrect": false
         }
       ]
     },
     {
-      "text": "Historical question 5 about the USSR?",
-      "explanationText": "Historical explanation 5.",
+      "text": "What economic policy did Lenin introduce in 1921, which temporarily allowed private trade and small businesses to revive the economy?",
+      "explanationText": "The New Economic Policy (NEP) was a more market-oriented economic policy introduced to rebuild the economy after the Russian Civil War.",
       "orderIndex": 5,
       "answers": [
         {
-          "text": "Fact A",
+          "text": "War Communism",
+          "isCorrect": false
+        },
+        {
+          "text": "The New Economic Policy (NEP)",
           "isCorrect": true
         },
         {
-          "text": "Fact B",
+          "text": "The First Five-Year Plan",
           "isCorrect": false
         },
         {
-          "text": "Fact C",
-          "isCorrect": false
-        },
-        {
-          "text": "Fact D",
+          "text": "Collectivization",
           "isCorrect": false
         }
       ]
     },
     {
-      "text": "Historical question 6 about the USSR?",
-      "explanationText": "Historical explanation 6.",
+      "text": "What was the name of the Red Army commander who played a key role in the Bolshevik victory during the Russian Civil War but was later exiled and assassinated?",
+      "explanationText": "Leon Trotsky founded the Red Army. After losing a power struggle to Stalin, he was exiled and eventually assassinated in Mexico in 1940.",
       "orderIndex": 6,
       "answers": [
         {
-          "text": "Fact A",
+          "text": "Leon Trotsky",
           "isCorrect": true
         },
         {
-          "text": "Fact B",
+          "text": "Lev Kamenev",
           "isCorrect": false
         },
         {
-          "text": "Fact C",
+          "text": "Grigory Zinoviev",
           "isCorrect": false
         },
         {
-          "text": "Fact D",
+          "text": "Nikolai Bukharin",
           "isCorrect": false
         }
       ]
     },
     {
-      "text": "Historical question 7 about the USSR?",
-      "explanationText": "Historical explanation 7.",
+      "text": "In which year was the Soviet Union (USSR) officially established?",
+      "explanationText": "The USSR was officially established in December 1922 by a treaty signing between the Russian, Ukrainian, Belarusian, and Transcaucasian republics.",
       "orderIndex": 7,
       "answers": [
         {
-          "text": "Fact A",
+          "text": "1917",
+          "isCorrect": false
+        },
+        {
+          "text": "1922",
           "isCorrect": true
         },
         {
-          "text": "Fact B",
+          "text": "1924",
           "isCorrect": false
         },
         {
-          "text": "Fact C",
-          "isCorrect": false
-        },
-        {
-          "text": "Fact D",
+          "text": "1945",
           "isCorrect": false
         }
       ]
     },
     {
-      "text": "Historical question 8 about the USSR?",
-      "explanationText": "Historical explanation 8.",
+      "text": "Which Soviet leader launched the policy of agricultural collectivization and rapid industrialization in the late 1920s?",
+      "explanationText": "Joseph Stalin initiated the Five-Year Plans and forced collectivization, aiming to transform the USSR from an agrarian society to an industrial superpower.",
       "orderIndex": 8,
       "answers": [
         {
-          "text": "Fact A",
+          "text": "Vladimir Lenin",
+          "isCorrect": false
+        },
+        {
+          "text": "Joseph Stalin",
           "isCorrect": true
         },
         {
-          "text": "Fact B",
+          "text": "Nikita Khrushchev",
           "isCorrect": false
         },
         {
-          "text": "Fact C",
-          "isCorrect": false
-        },
-        {
-          "text": "Fact D",
+          "text": "Leonid Brezhnev",
           "isCorrect": false
         }
       ]
     },
     {
-      "text": "Historical question 9 about the USSR?",
-      "explanationText": "Historical explanation 9.",
+      "text": "What term is used to describe the state-run system of forced labor camps in the Soviet Union?",
+      "explanationText": "The Gulag was the government agency that administered the main Soviet network of forced labor camps.",
       "orderIndex": 9,
       "answers": [
         {
-          "text": "Fact A",
+          "text": "Gulag",
           "isCorrect": true
         },
         {
-          "text": "Fact B",
+          "text": "Kolkhoz",
           "isCorrect": false
         },
         {
-          "text": "Fact C",
+          "text": "Komsomol",
           "isCorrect": false
         },
         {
-          "text": "Fact D",
+          "text": "Apparat",
           "isCorrect": false
         }
       ]
     },
     {
-      "text": "Historical question 10 about the USSR?",
-      "explanationText": "Historical explanation 10.",
+      "text": "Which Soviet city was subjected to a devastating 872-day military blockade by German forces during World War II?",
+      "explanationText": "The Siege of Leningrad (now Saint Petersburg) lasted from 1941 to 1944, resulting in massive casualties, primarily due to starvation.",
       "orderIndex": 10,
       "answers": [
         {
-          "text": "Fact A",
+          "text": "Moscow",
+          "isCorrect": false
+        },
+        {
+          "text": "Leningrad",
           "isCorrect": true
         },
         {
-          "text": "Fact B",
+          "text": "Stalingrad",
           "isCorrect": false
         },
         {
-          "text": "Fact C",
-          "isCorrect": false
-        },
-        {
-          "text": "Fact D",
+          "text": "Kiev",
           "isCorrect": false
         }
       ]
     },
     {
-      "text": "Historical question 11 about the USSR?",
-      "explanationText": "Historical explanation 11.",
+      "text": "Which battle is widely considered the major turning point of World War II on the Eastern Front?",
+      "explanationText": "The Battle of Stalingrad (1942–1943) ended with the surrender of the German 6th Army and turned the tide of the war in favor of the Allies.",
       "orderIndex": 11,
       "answers": [
         {
-          "text": "Fact A",
+          "text": "Battle of Moscow",
+          "isCorrect": false
+        },
+        {
+          "text": "Battle of Stalingrad",
           "isCorrect": true
         },
         {
-          "text": "Fact B",
+          "text": "Battle of Berlin",
           "isCorrect": false
         },
         {
-          "text": "Fact C",
-          "isCorrect": false
-        },
-        {
-          "text": "Fact D",
+          "text": "Battle of Kursk",
           "isCorrect": false
         }
       ]
     },
     {
-      "text": "Historical question 12 about the USSR?",
-      "explanationText": "Historical explanation 12.",
+      "text": "Who was the British Prime Minister who coined the term 'Iron Curtain' in 1946 to describe the division of Europe?",
+      "explanationText": "Winston Churchill delivered his famous 'Sinews of Peace' address in Fulton, Missouri, coining the phrase 'Iron Curtain'.",
       "orderIndex": 12,
       "answers": [
         {
-          "text": "Fact A",
+          "text": "Neville Chamberlain",
+          "isCorrect": false
+        },
+        {
+          "text": "Winston Churchill",
           "isCorrect": true
         },
         {
-          "text": "Fact B",
+          "text": "Clement Attlee",
           "isCorrect": false
         },
         {
-          "text": "Fact C",
-          "isCorrect": false
-        },
-        {
-          "text": "Fact D",
+          "text": "Franklin D. Roosevelt",
           "isCorrect": false
         }
       ]
     },
     {
-      "text": "Historical question 13 about the USSR?",
-      "explanationText": "Historical explanation 13.",
+      "text": "Which military alliance was formed in 1955 by the Soviet Union and its Eastern European satellite states in response to West Germany joining NATO?",
+      "explanationText": "The Warsaw Pact was a collective defense treaty signed in Warsaw, Poland, between the USSR and seven Soviet satellite states.",
       "orderIndex": 13,
       "answers": [
         {
-          "text": "Fact A",
+          "text": "The Warsaw Pact",
           "isCorrect": true
         },
         {
-          "text": "Fact B",
+          "text": "The Comecon",
           "isCorrect": false
         },
         {
-          "text": "Fact C",
+          "text": "The Non-Aligned Movement",
           "isCorrect": false
         },
         {
-          "text": "Fact D",
+          "text": "The Axis Alliance",
           "isCorrect": false
         }
       ]
     },
     {
-      "text": "Historical question 14 about the USSR?",
-      "explanationText": "Historical explanation 14.",
+      "text": "Who succeeded Joseph Stalin as the leader of the Soviet Union and initiated a period known as the 'Thaw'?",
+      "explanationText": "Nikita Khrushchev led the USSR during the Cold War, initiating 'De-Stalinization' and political relaxation known as the Khrushchev Thaw.",
       "orderIndex": 14,
       "answers": [
         {
-          "text": "Fact A",
+          "text": "Lavrentiy Beria",
+          "isCorrect": false
+        },
+        {
+          "text": "Nikita Khrushchev",
           "isCorrect": true
         },
         {
-          "text": "Fact B",
+          "text": "Georgy Malenkov",
           "isCorrect": false
         },
         {
-          "text": "Fact C",
-          "isCorrect": false
-        },
-        {
-          "text": "Fact D",
+          "text": "Leonid Brezhnev",
           "isCorrect": false
         }
       ]
     },
     {
-      "text": "Historical question 15 about the USSR?",
-      "explanationText": "Historical explanation 15.",
+      "text": "In 1956, Khrushchev delivered a secret speech titled 'On the Cult of Personality and Its Consequences.' What was its primary focus?",
+      "explanationText": "Delivered at the 20th Party Congress, the speech criticized Stalin's purges, the cult of personality, and gulags.",
       "orderIndex": 15,
       "answers": [
         {
-          "text": "Fact A",
+          "text": "Praising Stalin's war efforts",
+          "isCorrect": false
+        },
+        {
+          "text": "Denouncing the crimes and excesses of Joseph Stalin",
           "isCorrect": true
         },
         {
-          "text": "Fact B",
+          "text": "Declaring war on the United States",
           "isCorrect": false
         },
         {
-          "text": "Fact C",
-          "isCorrect": false
-        },
-        {
-          "text": "Fact D",
+          "text": "Announcing the space program",
           "isCorrect": false
         }
       ]
     },
     {
-      "text": "Historical question 16 about the USSR?",
-      "explanationText": "Historical explanation 16.",
+      "text": "What was the name of the first artificial satellite launched into space by the Soviet Union in 1957?",
+      "explanationText": "Sputnik 1 was launched by the Soviet Union on October 4, 1957, starting the Space Age and the Space Race.",
       "orderIndex": 16,
       "answers": [
         {
-          "text": "Fact A",
+          "text": "Vostok 1",
+          "isCorrect": false
+        },
+        {
+          "text": "Sputnik 1",
           "isCorrect": true
         },
         {
-          "text": "Fact B",
+          "text": "Soyuz",
           "isCorrect": false
         },
         {
-          "text": "Fact C",
-          "isCorrect": false
-        },
-        {
-          "text": "Fact D",
+          "text": "Mir",
           "isCorrect": false
         }
       ]
     },
     {
-      "text": "Historical question 17 about the USSR?",
-      "explanationText": "Historical explanation 17.",
+      "text": "Who was the first human to travel into outer space, orbiting the Earth in April 1961?",
+      "explanationText": "Soviet cosmonaut Yuri Gagarin completed one orbit of Earth in his Vostok 1 spacecraft on April 12, 1961.",
       "orderIndex": 17,
       "answers": [
         {
-          "text": "Fact A",
+          "text": "Neil Armstrong",
+          "isCorrect": false
+        },
+        {
+          "text": "Yuri Gagarin",
           "isCorrect": true
         },
         {
-          "text": "Fact B",
+          "text": "Gherman Titov",
           "isCorrect": false
         },
         {
-          "text": "Fact C",
-          "isCorrect": false
-        },
-        {
-          "text": "Fact D",
+          "text": "Alexei Leonov",
           "isCorrect": false
         }
       ]
     },
     {
-      "text": "Historical question 18 about the USSR?",
-      "explanationText": "Historical explanation 18.",
+      "text": "Which tense 1962 confrontation brought the US and USSR to the brink of nuclear war?",
+      "explanationText": "The Cuban Missile Crisis occurred when the US discovered Soviet nuclear missiles deployed in Cuba, leading to a 13-day standoff.",
       "orderIndex": 18,
       "answers": [
         {
-          "text": "Fact A",
+          "text": "The Berlin Crisis",
+          "isCorrect": false
+        },
+        {
+          "text": "The Cuban Missile Crisis",
           "isCorrect": true
         },
         {
-          "text": "Fact B",
+          "text": "The U-2 Incident",
           "isCorrect": false
         },
         {
-          "text": "Fact C",
-          "isCorrect": false
-        },
-        {
-          "text": "Fact D",
+          "text": "The Suez Crisis",
           "isCorrect": false
         }
       ]
     },
     {
-      "text": "Historical question 19 about the USSR?",
-      "explanationText": "Historical explanation 19.",
+      "text": "Which Soviet leader succeeded Nikita Khrushchev in 1964 and led the country during a period later termed the 'Era of Stagnation'?",
+      "explanationText": "Leonid Brezhnev ruled from 1964 to 1982, marked by political stability but economic stagnation and military build-up.",
       "orderIndex": 19,
       "answers": [
         {
-          "text": "Fact A",
+          "text": "Leonid Brezhnev",
           "isCorrect": true
         },
         {
-          "text": "Fact B",
+          "text": "Yuri Andropov",
           "isCorrect": false
         },
         {
-          "text": "Fact C",
+          "text": "Konstantin Chernenko",
           "isCorrect": false
         },
         {
-          "text": "Fact D",
+          "text": "Mikhail Gorbachev",
           "isCorrect": false
         }
       ]
     },
     {
-      "text": "Historical question 20 about the USSR?",
-      "explanationText": "Historical explanation 20.",
+      "text": "The invasion of which country in 1979 led to a prolonged, ten-year conflict often described as the Soviet Union's 'Vietnam War'?",
+      "explanationText": "The Soviet-Afghan War began in December 1979, draining Soviet military and economic resources and contributing to its collapse.",
       "orderIndex": 20,
       "answers": [
         {
-          "text": "Fact A",
+          "text": "Czechoslovakia",
+          "isCorrect": false
+        },
+        {
+          "text": "Afghanistan",
           "isCorrect": true
         },
         {
-          "text": "Fact B",
+          "text": "Hungary",
           "isCorrect": false
         },
         {
-          "text": "Fact C",
-          "isCorrect": false
-        },
-        {
-          "text": "Fact D",
+          "text": "Poland",
           "isCorrect": false
         }
       ]
     },
     {
-      "text": "Historical question 21 about the USSR?",
-      "explanationText": "Historical explanation 21.",
+      "text": "Who became the last General Secretary of the Communist Party of the Soviet Union in 1985?",
+      "explanationText": "Mikhail Gorbachev introduced major reforms to revitalize the USSR but ultimately presided over its dissolution in 1991.",
       "orderIndex": 21,
       "answers": [
         {
-          "text": "Fact A",
+          "text": "Mikhail Gorbachev",
           "isCorrect": true
         },
         {
-          "text": "Fact B",
+          "text": "Boris Yeltsin",
           "isCorrect": false
         },
         {
-          "text": "Fact C",
+          "text": "Yuri Andropov",
           "isCorrect": false
         },
         {
-          "text": "Fact D",
+          "text": "Konstantin Chernenko",
           "isCorrect": false
         }
       ]
     },
     {
-      "text": "Historical question 22 about the USSR?",
-      "explanationText": "Historical explanation 22.",
+      "text": "What did the reform policy 'Glasnost', introduced by Mikhail Gorbachev, translate to?",
+      "explanationText": "Glasnost was the policy of increased transparency in government activities and freedom of information and speech.",
       "orderIndex": 22,
       "answers": [
         {
-          "text": "Fact A",
+          "text": "Economic restructuring",
+          "isCorrect": false
+        },
+        {
+          "text": "Political openness/transparency",
           "isCorrect": true
         },
         {
-          "text": "Fact B",
+          "text": "Accelerated production",
           "isCorrect": false
         },
         {
-          "text": "Fact C",
-          "isCorrect": false
-        },
-        {
-          "text": "Fact D",
+          "text": "Democratic elections",
           "isCorrect": false
         }
       ]
     },
     {
-      "text": "Historical question 23 about the USSR?",
-      "explanationText": "Historical explanation 23.",
+      "text": "What did the reform policy 'Perestroika', introduced by Mikhail Gorbachev, translate to?",
+      "explanationText": "Perestroika referred to the restructuring of the Soviet political and economic systems, allowing some private enterprise.",
       "orderIndex": 23,
       "answers": [
         {
-          "text": "Fact A",
+          "text": "Freedom of press",
+          "isCorrect": false
+        },
+        {
+          "text": "Economic restructuring",
           "isCorrect": true
         },
         {
-          "text": "Fact B",
+          "text": "International friendship",
           "isCorrect": false
         },
         {
-          "text": "Fact C",
-          "isCorrect": false
-        },
-        {
-          "text": "Fact D",
+          "text": "Social security",
           "isCorrect": false
         }
       ]
     },
     {
-      "text": "Historical question 24 about the USSR?",
-      "explanationText": "Historical explanation 24.",
+      "text": "Which Soviet nuclear power plant was the site of the world's worst civilian nuclear disaster in April 1986?",
+      "explanationText": "The Chernobyl disaster occurred in the Ukrainian SSR, releasing massive amounts of radioactive contamination across Europe.",
       "orderIndex": 24,
       "answers": [
         {
-          "text": "Fact A",
+          "text": "Novovoronezh",
+          "isCorrect": false
+        },
+        {
+          "text": "Chernobyl",
           "isCorrect": true
         },
         {
-          "text": "Fact B",
+          "text": "Kursk",
           "isCorrect": false
         },
         {
-          "text": "Fact C",
-          "isCorrect": false
-        },
-        {
-          "text": "Fact D",
+          "text": "Zaporizhzhia",
           "isCorrect": false
         }
       ]
     },
     {
-      "text": "Historical question 25 about the USSR?",
-      "explanationText": "Historical explanation 25.",
+      "text": "What physical barrier, dividing a major European city, was opened in November 1989, symbolizing the collapse of communism in Eastern Europe?",
+      "explanationText": "The fall of the Berlin Wall in November 1989 marked the beginning of the end of the Cold War and communist regimes in Eastern Europe.",
       "orderIndex": 25,
       "answers": [
         {
-          "text": "Fact A",
+          "text": "The Iron Curtain",
+          "isCorrect": false
+        },
+        {
+          "text": "The Berlin Wall",
           "isCorrect": true
         },
         {
-          "text": "Fact B",
+          "text": "The inner German border",
           "isCorrect": false
         },
         {
-          "text": "Fact C",
-          "isCorrect": false
-        },
-        {
-          "text": "Fact D",
+          "text": "The Curzon Line",
           "isCorrect": false
         }
       ]
     },
     {
-      "text": "Historical question 26 about the USSR?",
-      "explanationText": "Historical explanation 26.",
+      "text": "What was the name of the attempted coup in August 1991 that sought to depose Mikhail Gorbachev and halt his reform program?",
+      "explanationText": "The August Coup was launched by hardline members of the Communist Party, but failed due to popular resistance led by Boris Yeltsin.",
       "orderIndex": 26,
       "answers": [
         {
-          "text": "Fact A",
+          "text": "The August Coup",
           "isCorrect": true
         },
         {
-          "text": "Fact B",
+          "text": "The Bolshevik Putsch",
           "isCorrect": false
         },
         {
-          "text": "Fact C",
+          "text": "The Decembrist Uprising",
           "isCorrect": false
         },
         {
-          "text": "Fact D",
+          "text": "The Kronstadt Mutiny",
           "isCorrect": false
         }
       ]
     },
     {
-      "text": "Historical question 27 about the USSR?",
-      "explanationText": "Historical explanation 27.",
+      "text": "Who was elected as the first President of the Russian Federation in June 1991, playing a key role in defeating the August Coup?",
+      "explanationText": "Boris Yeltsin became the leader of the Russian Soviet Federative Socialist Republic and emerged as a hero during the August Coup.",
       "orderIndex": 27,
       "answers": [
         {
-          "text": "Fact A",
+          "text": "Mikhail Gorbachev",
+          "isCorrect": false
+        },
+        {
+          "text": "Boris Yeltsin",
           "isCorrect": true
         },
         {
-          "text": "Fact B",
+          "text": "Vladimir Putin",
           "isCorrect": false
         },
         {
-          "text": "Fact C",
-          "isCorrect": false
-        },
-        {
-          "text": "Fact D",
+          "text": "Dmitry Medvedev",
           "isCorrect": false
         }
       ]
     },
     {
-      "text": "Historical question 28 about the USSR?",
-      "explanationText": "Historical explanation 28.",
+      "text": "Which agreement, signed in December 1991 by the leaders of Russia, Ukraine, and Belarus, declared the Soviet Union dissolved?",
+      "explanationText": "The Belavezha Accords declared that the USSR had ceased to exist and established the Commonwealth of Independent States (CIS).",
       "orderIndex": 28,
       "answers": [
         {
-          "text": "Fact A",
+          "text": "The Belavezha Accords",
           "isCorrect": true
         },
         {
-          "text": "Fact B",
+          "text": "The Alma-Ata Protocol",
           "isCorrect": false
         },
         {
-          "text": "Fact C",
+          "text": "The Treaty of Warsaw",
           "isCorrect": false
         },
         {
-          "text": "Fact D",
+          "text": "The Helsinki Accords",
           "isCorrect": false
         }
       ]
     },
     {
-      "text": "Historical question 29 about the USSR?",
-      "explanationText": "Historical explanation 29.",
+      "text": "On what date did the Soviet flag over the Kremlin fly for the last time, marking the official end of the Soviet Union?",
+      "explanationText": "On December 25, 1991, Mikhail Gorbachev resigned as President of the USSR, and the Soviet hammer and sickle flag was replaced by the Russian tricolor.",
       "orderIndex": 29,
       "answers": [
         {
-          "text": "Fact A",
+          "text": "November 9, 1989",
+          "isCorrect": false
+        },
+        {
+          "text": "December 25, 1991",
           "isCorrect": true
         },
         {
-          "text": "Fact B",
+          "text": "August 21, 1991",
           "isCorrect": false
         },
         {
-          "text": "Fact C",
-          "isCorrect": false
-        },
-        {
-          "text": "Fact D",
+          "text": "January 1, 1992",
           "isCorrect": false
         }
       ]
     },
     {
-      "text": "Historical question 30 about the USSR?",
-      "explanationText": "Historical explanation 30.",
+      "text": "How many sovereign republics emerged as independent nations following the dissolution of the Soviet Union?",
+      "explanationText": "The dissolution of the Soviet Union resulted in 15 independent successor states: Armenia, Azerbaijan, Belarus, Estonia, Georgia, Kazakhstan, Kyrgyzstan, Latvia, Lithuania, Moldova, Russia, Tajikistan, Turkmenistan, Ukraine, and Uzbekistan.",
       "orderIndex": 30,
       "answers": [
         {
-          "text": "Fact A",
+          "text": "12 republics",
+          "isCorrect": false
+        },
+        {
+          "text": "15 republics",
           "isCorrect": true
         },
         {
-          "text": "Fact B",
+          "text": "10 republics",
           "isCorrect": false
         },
         {
-          "text": "Fact C",
-          "isCorrect": false
-        },
-        {
-          "text": "Fact D",
+          "text": "20 republics",
           "isCorrect": false
         }
       ]
