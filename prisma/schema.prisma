@@ -21,6 +21,7 @@ model User {
   sessions              QuizSession[]
   bookmarks             Bookmark[]
   notificationSchedules NotificationSchedule[]
+  reviews               Review[]
 
   @@map("users")
 }
@@ -47,6 +48,9 @@ model QuestionSet {
   topic       String
   mediaUrl    String?  @map("media_url")
   isFeatured  Boolean  @default(false) @map("is_featured")
+  avgRating   Float    @default(0) @map("avg_rating")
+  reviewCount Int      @default(0) @map("review_count")
+  questionCount Int    @default(0) @map("question_count")
   createdAt   DateTime @default(now()) @map("created_at")
   updatedAt   DateTime @updatedAt @map("updated_at")
 
@@ -55,6 +59,7 @@ model QuestionSet {
   tags      QuestionSetTag[]
   sessions  QuizSession[]
   bookmarks Bookmark[]
+  reviews   Review[]
 
   @@index([topic, isFeatured])
   @@map("question_sets")
@@ -165,3 +170,21 @@ model NotificationSchedule {
 
   @@map("notification_schedules")
 }
+
+model Review {
+  id            String   @id @default(uuid()) @db.Uuid
+  userId        String   @map("user_id") @db.Uuid
+  questionSetId String   @map("question_set_id") @db.Uuid
+  rating        Float
+  comment       String?  @db.Text
+  createdAt     DateTime @default(now()) @map("created_at")
+  updatedAt     DateTime @updatedAt @map("updated_at")
+
+  user        User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  questionSet QuestionSet @relation(fields: [questionSetId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, questionSetId])
+  @@index([questionSetId])
+  @@map("reviews")
+}
+

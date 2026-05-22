@@ -7,12 +7,15 @@ import {
   Max,
   IsEnum,
   IsBoolean,
+  IsArray,
+  IsNumber,
 } from 'class-validator';
 import { Transform, Type } from 'class-transformer';
 
 export enum QuestionSetSort {
   Popular = 'popular',
   Latest = 'latest',
+  Rating = 'rating',
 }
 
 const toOptionalBoolean = ({ value }: { value: unknown }) => {
@@ -42,8 +45,59 @@ export class QueryQuestionSetsDto {
   topic?: string;
 
   @ApiProperty({
+    example: 'algebra',
+    description: 'Search in title and description',
+    required: false,
+  })
+  @IsOptional()
+  @IsString()
+  search?: string;
+
+  @ApiProperty({
+    example: ['Literature', 'Science'],
+    description: 'Filter by tags',
+    required: false,
+    isArray: true,
+  })
+  @IsOptional()
+  @Transform(({ value }) => (Array.isArray(value) ? value : [value]))
+  @IsArray()
+  @IsString({ each: true })
+  tags?: string[];
+
+  @ApiProperty({ example: 10, description: 'Minimum number of questions', required: false })
+  @IsOptional()
+  @Type(() => Number)
+  @IsInt()
+  @Min(1)
+  minQuestions?: number;
+
+  @ApiProperty({ example: 25, description: 'Maximum number of questions', required: false })
+  @IsOptional()
+  @Type(() => Number)
+  @IsInt()
+  @Min(1)
+  maxQuestions?: number;
+
+  @ApiProperty({ example: 4.0, description: 'Minimum rating', required: false })
+  @IsOptional()
+  @Type(() => Number)
+  @IsNumber()
+  @Min(0)
+  @Max(5)
+  minRating?: number;
+
+  @ApiProperty({ example: 5.0, description: 'Maximum rating', required: false })
+  @IsOptional()
+  @Type(() => Number)
+  @IsNumber()
+  @Min(0)
+  @Max(5)
+  maxRating?: number;
+
+  @ApiProperty({
     enum: QuestionSetSort,
-    example: QuestionSetSort.Popular,
+    example: QuestionSetSort.Rating,
     description: 'Sort order',
     required: false,
   })

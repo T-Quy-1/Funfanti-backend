@@ -1,0 +1,23 @@
+{
+  "id": "b2c93d95-2950-528f-a5be-842ff69fc921",
+  "title": "Intro to Chemistry",
+  "description": "Learn the fundamentals of elements, atoms, and chemical reactions.",
+  "topic": "science",
+  "mediaUrl": "https://res.cloudinary.com/demo/image/upload/v1612345678/chemistry.jpg",
+  "isFeatured": false,
+  "creatorEmail": "creator@example.com",
+  "tags": ["Science"],
+  "questions": [
+    {
+      "text": "What is the chemical symbol for Gold?",
+      "explanationText": "The symbol for Gold is Au, which comes from the Latin word aurum (meaning shining dawn).",
+      "orderIndex": 0,
+      "answers": [
+        { "text": "Ag", "isCorrect": false },
+        { "text": "Fe", "isCorrect": false },
+        { "text": "Au", "isCorrect": true },
+        { "text": "Gd", "isCorrect": false }
+      ]
+    }
+  ]
+}

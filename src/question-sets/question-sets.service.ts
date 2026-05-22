@@ -2,9 +2,11 @@ import {
   Injectable,
   NotFoundException,
   ConflictException,
+  Logger,
 } from '@nestjs/common';
 import { Prisma } from '@prisma/client';
 import { PrismaService } from '../common/prisma.service';
+import { Cron, CronExpression } from '@nestjs/schedule';
 import {
   QueryQuestionSetsDto,
   QuestionSetSort,
@@ -12,15 +14,88 @@ import {
 
 @Injectable()
 export class QuestionSetsService {
+  private readonly logger = new Logger(QuestionSetsService.name);
+
   constructor(private readonly prisma: PrismaService) {}
 
+  @Cron(CronExpression.EVERY_5_MINUTES)
+  async updateAllRatings() {
+    this.logger.log('Running periodic rating aggregation...');
+    
+    // Group all reviews by questionSetId and calculate averages/counts
+    const aggregations = await this.prisma.review.groupBy({
+      by: ['questionSetId'],
+      _avg: { rating: true },
+      _count: { id: true },
+    });
+
+    for (const agg of aggregations) {
+      if (!agg._avg.rating) continue;
+      
+      await this.prisma.questionSet.update({
+        where: { id: agg.questionSetId },
+        data: {
+          avgRating: agg._avg.rating,
+          reviewCount: agg._count.id,
+        },
+      });
+    }
+    
+    this.logger.log(`Updated ratings for ${aggregations.length} question sets.`);
+  }
+
   async findAll(query: QueryQuestionSetsDto) {
-    const { topic, sort, isFeatured, page = 1, limit = 20 } = query;
+    const {
+      topic,
+      search,
+      tags,
+      minQuestions,
+      maxQuestions,
+      minRating,
+      maxRating,
+      sort,
+      isFeatured,
+      page = 1,
+      limit = 20,
+    } = query;
     const skip = (page - 1) * limit;
 
     const where: Prisma.QuestionSetWhereInput = {};
+    
     if (topic) {
       where.topic = { equals: topic, mode: 'insensitive' };
+    }
+
+    if (search) {
+      where.OR = [
+        { title: { contains: search, mode: 'insensitive' } },
+        { description: { contains: search, mode: 'insensitive' } },
+        { topic: { contains: search, mode: 'insensitive' } },
+      ];
+    }
+
+    if (tags && tags.length > 0) {
+      where.tags = {
+        some: {
+          tag: {
+            name: { in: tags, mode: 'insensitive' },
+          },
+        },
+      };
+    }
+
+    if (minQuestions !== undefined || maxQuestions !== undefined) {
+      where.questionCount = {
+        ...(minQuestions !== undefined && { gte: minQuestions }),
+        ...(maxQuestions !== undefined && { lte: maxQuestions }),
+      };
+    }
+
+    if (minRating !== undefined || maxRating !== undefined) {
+      where.avgRating = {
+        ...(minRating !== undefined && { gte: minRating }),
+        ...(maxRating !== undefined && { lte: maxRating }),
+      };
     }
 
     if (isFeatured !== undefined) {
@@ -34,6 +109,8 @@ export class QuestionSetsService {
       orderBy = { sessions: { _count: 'desc' } };
     } else if (sort === QuestionSetSort.Latest) {
       orderBy = { createdAt: 'desc' };
+    } else if (sort === QuestionSetSort.Rating) {
+      orderBy = { avgRating: 'desc' };
     } else {
       orderBy = [{ isFeatured: 'desc' }, { createdAt: 'desc' }];
     }
@@ -63,6 +140,8 @@ export class QuestionSetsService {
       topic: qs.topic,
       mediaUrl: qs.mediaUrl,
       isFeatured: qs.isFeatured,
+      avgRating: qs.avgRating,
+      reviewCount: qs.reviewCount,
       tags: qs.tags.map((t) => t.tag.name),
       creator: qs.creator,
       questionCount: qs._count.questions,
@@ -98,6 +177,8 @@ export class QuestionSetsService {
       topic: qs.topic,
       mediaUrl: qs.mediaUrl,
       isFeatured: qs.isFeatured,
+      avgRating: qs.avgRating,
+      reviewCount: qs.reviewCount,
       tags: qs.tags.map((t) => t.tag.name),
       creator: qs.creator,
       questionCount: qs._count.questions,
