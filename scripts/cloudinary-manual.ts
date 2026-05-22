@@ -17,14 +17,14 @@ async function run() {
 
   if (action === 'upload') {
     const filePath = path.resolve(param || 'img/sample.png');
-    
+
     if (!fs.existsSync(filePath)) {
       console.error(`❌ File not found at: ${filePath}`);
       process.exit(1);
     }
 
     console.log(`Uploading: ${filePath}...`);
-    
+
     const fileBuffer = fs.readFileSync(filePath);
     const mockFile = {
       buffer: fileBuffer,
@@ -33,15 +33,15 @@ async function run() {
     } as any;
 
     try {
-      const result = await service.uploadImage(mockFile, 'funfanti/manual_tests');
+      const result = await service.uploadImage(mockFile, 'funfanti/images');
       console.log('✅ Upload Success!');
       console.log('Public ID:', result.public_id);
       console.log('URL:', result.secure_url);
     } catch (err) {
       console.error('❌ Upload Failed:', err);
     }
-  } 
-  
+  }
+
   else if (action === 'delete') {
     if (!param) {
       console.error('❌ Please provide a public_id to delete.');
@@ -55,8 +55,8 @@ async function run() {
     } catch (err) {
       console.error('❌ Delete Failed:', err);
     }
-  } 
-  
+  }
+
   else {
     console.log('Usage:');
     console.log('  npx ts-node scripts/cloudinary-manual.ts upload <path_to_image>');

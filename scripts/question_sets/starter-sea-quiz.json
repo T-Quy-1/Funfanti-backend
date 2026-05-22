@@ -1,0 +1,63 @@
+{
+  "creatorEmail": "creator@example.com",
+  "title": "Starter Sea Quiz",
+  "description": "A quick starter quiz about the ocean and its wonders.",
+  "topic": "nature",
+  "mediaUrl": "https://res.cloudinary.com/dvtr2aklu/image/upload/v1779448196/funfanti/images/hgskcvk2mrnaghtv8lyw.png",
+  "isFeatured": false,
+  "tags": [
+    "Ocean",
+    "Nature",
+    "Fun Facts"
+  ],
+  "questions": [
+    {
+      "text": "How many main oceans are there on Earth?",
+      "mediaUrl": "https://res.cloudinary.com/dvtr2aklu/image/upload/v1779448198/funfanti/images/dslotamhc80f8tpvdmcs.png",
+      "explanationText": "There are 5 main oceans on Earth: the Pacific, Atlantic, Indian, Southern, and Arctic. The Pacific is the largest and deepest, covering over 30% of the Earth's surface, while the Arctic is the smallest and shallowest.",
+      "orderIndex": 1,
+      "answers": [
+        {
+          "text": "4 Oceans",
+          "isCorrect": false
+        },
+        {
+          "text": "5 Oceans",
+          "isCorrect": true
+        },
+        {
+          "text": "6 Oceans",
+          "isCorrect": false
+        },
+        {
+          "text": "7 Oceans",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "text": "Which of these sea creatures is NOT actually a fish?",
+      "mediaUrl": "https://res.cloudinary.com/dvtr2aklu/image/upload/v1779448195/funfanti/images/rlgmd5adaejvum6hwrmb.jpg",
+      "explanationText": "Despite the name, a jellyfish is actually an invertebrate, not a fish. True fish have backbones and gills, whereas jellyfish are gelatinous zooplankton composed of about 95% water and lack a brain, heart, or bones.",
+      "orderIndex": 2,
+      "answers": [
+        {
+          "text": "Sea Horse",
+          "isCorrect": false
+        },
+        {
+          "text": "Great White Shark",
+          "isCorrect": false
+        },
+        {
+          "text": "Jelly Fish",
+          "isCorrect": true
+        },
+        {
+          "text": "Moray Eel",
+          "isCorrect": false
+        }
+      ]
+    }
+  ]
+}

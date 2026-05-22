@@ -1,0 +1,705 @@
+{
+  "creatorEmail": "creator@example.com",
+  "title": "USSR 101",
+  "description": "Learn about the history of the USSR.",
+  "topic": "history",
+  "mediaUrl": "https://res.cloudinary.com/dvtr2aklu/image/upload/v1779448197/funfanti/images/octlozjczwkl9it8pdnr.png",
+  "isFeatured": true,
+  "tags": [
+    "History",
+    "Russia",
+    "Modern History"
+  ],
+  "questions": [
+    {
+      "text": "Historical question 1 about the USSR?",
+      "explanationText": "Historical explanation 1.",
+      "orderIndex": 1,
+      "answers": [
+        {
+          "text": "Fact A",
+          "isCorrect": true
+        },
+        {
+          "text": "Fact B",
+          "isCorrect": false
+        },
+        {
+          "text": "Fact C",
+          "isCorrect": false
+        },
+        {
+          "text": "Fact D",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "text": "Historical question 2 about the USSR?",
+      "explanationText": "Historical explanation 2.",
+      "orderIndex": 2,
+      "answers": [
+        {
+          "text": "Fact A",
+          "isCorrect": true
+        },
+        {
+          "text": "Fact B",
+          "isCorrect": false
+        },
+        {
+          "text": "Fact C",
+          "isCorrect": false
+        },
+        {
+          "text": "Fact D",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "text": "Historical question 3 about the USSR?",
+      "explanationText": "Historical explanation 3.",
+      "orderIndex": 3,
+      "answers": [
+        {
+          "text": "Fact A",
+          "isCorrect": true
+        },
+        {
+          "text": "Fact B",
+          "isCorrect": false
+        },
+        {
+          "text": "Fact C",
+          "isCorrect": false
+        },
+        {
+          "text": "Fact D",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "text": "Historical question 4 about the USSR?",
+      "explanationText": "Historical explanation 4.",
+      "orderIndex": 4,
+      "answers": [
+        {
+          "text": "Fact A",
+          "isCorrect": true
+        },
+        {
+          "text": "Fact B",
+          "isCorrect": false
+        },
+        {
+          "text": "Fact C",
+          "isCorrect": false
+        },
+        {
+          "text": "Fact D",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "text": "Historical question 5 about the USSR?",
+      "explanationText": "Historical explanation 5.",
+      "orderIndex": 5,
+      "answers": [
+        {
+          "text": "Fact A",
+          "isCorrect": true
+        },
+        {
+          "text": "Fact B",
+          "isCorrect": false
+        },
+        {
+          "text": "Fact C",
+          "isCorrect": false
+        },
+        {
+          "text": "Fact D",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "text": "Historical question 6 about the USSR?",
+      "explanationText": "Historical explanation 6.",
+      "orderIndex": 6,
+      "answers": [
+        {
+          "text": "Fact A",
+          "isCorrect": true
+        },
+        {
+          "text": "Fact B",
+          "isCorrect": false
+        },
+        {
+          "text": "Fact C",
+          "isCorrect": false
+        },
+        {
+          "text": "Fact D",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "text": "Historical question 7 about the USSR?",
+      "explanationText": "Historical explanation 7.",
+      "orderIndex": 7,
+      "answers": [
+        {
+          "text": "Fact A",
+          "isCorrect": true
+        },
+        {
+          "text": "Fact B",
+          "isCorrect": false
+        },
+        {
+          "text": "Fact C",
+          "isCorrect": false
+        },
+        {
+          "text": "Fact D",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "text": "Historical question 8 about the USSR?",
+      "explanationText": "Historical explanation 8.",
+      "orderIndex": 8,
+      "answers": [
+        {
+          "text": "Fact A",
+          "isCorrect": true
+        },
+        {
+          "text": "Fact B",
+          "isCorrect": false
+        },
+        {
+          "text": "Fact C",
+          "isCorrect": false
+        },
+        {
+          "text": "Fact D",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "text": "Historical question 9 about the USSR?",
+      "explanationText": "Historical explanation 9.",
+      "orderIndex": 9,
+      "answers": [
+        {
+          "text": "Fact A",
+          "isCorrect": true
+        },
+        {
+          "text": "Fact B",
+          "isCorrect": false
+        },
+        {
+          "text": "Fact C",
+          "isCorrect": false
+        },
+        {
+          "text": "Fact D",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "text": "Historical question 10 about the USSR?",
+      "explanationText": "Historical explanation 10.",
+      "orderIndex": 10,
+      "answers": [
+        {
+          "text": "Fact A",
+          "isCorrect": true
+        },
+        {
+          "text": "Fact B",
+          "isCorrect": false
+        },
+        {
+          "text": "Fact C",
+          "isCorrect": false
+        },
+        {
+          "text": "Fact D",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "text": "Historical question 11 about the USSR?",
+      "explanationText": "Historical explanation 11.",
+      "orderIndex": 11,
+      "answers": [
+        {
+          "text": "Fact A",
+          "isCorrect": true
+        },
+        {
+          "text": "Fact B",
+          "isCorrect": false
+        },
+        {
+          "text": "Fact C",
+          "isCorrect": false
+        },
+        {
+          "text": "Fact D",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "text": "Historical question 12 about the USSR?",
+      "explanationText": "Historical explanation 12.",
+      "orderIndex": 12,
+      "answers": [
+        {
+          "text": "Fact A",
+          "isCorrect": true
+        },
+        {
+          "text": "Fact B",
+          "isCorrect": false
+        },
+        {
+          "text": "Fact C",
+          "isCorrect": false
+        },
+        {
+          "text": "Fact D",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "text": "Historical question 13 about the USSR?",
+      "explanationText": "Historical explanation 13.",
+      "orderIndex": 13,
+      "answers": [
+        {
+          "text": "Fact A",
+          "isCorrect": true
+        },
+        {
+          "text": "Fact B",
+          "isCorrect": false
+        },
+        {
+          "text": "Fact C",
+          "isCorrect": false
+        },
+        {
+          "text": "Fact D",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "text": "Historical question 14 about the USSR?",
+      "explanationText": "Historical explanation 14.",
+      "orderIndex": 14,
+      "answers": [
+        {
+          "text": "Fact A",
+          "isCorrect": true
+        },
+        {
+          "text": "Fact B",
+          "isCorrect": false
+        },
+        {
+          "text": "Fact C",
+          "isCorrect": false
+        },
+        {
+          "text": "Fact D",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "text": "Historical question 15 about the USSR?",
+      "explanationText": "Historical explanation 15.",
+      "orderIndex": 15,
+      "answers": [
+        {
+          "text": "Fact A",
+          "isCorrect": true
+        },
+        {
+          "text": "Fact B",
+          "isCorrect": false
+        },
+        {
+          "text": "Fact C",
+          "isCorrect": false
+        },
+        {
+          "text": "Fact D",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "text": "Historical question 16 about the USSR?",
+      "explanationText": "Historical explanation 16.",
+      "orderIndex": 16,
+      "answers": [
+        {
+          "text": "Fact A",
+          "isCorrect": true
+        },
+        {
+          "text": "Fact B",
+          "isCorrect": false
+        },
+        {
+          "text": "Fact C",
+          "isCorrect": false
+        },
+        {
+          "text": "Fact D",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "text": "Historical question 17 about the USSR?",
+      "explanationText": "Historical explanation 17.",
+      "orderIndex": 17,
+      "answers": [
+        {
+          "text": "Fact A",
+          "isCorrect": true
+        },
+        {
+          "text": "Fact B",
+          "isCorrect": false
+        },
+        {
+          "text": "Fact C",
+          "isCorrect": false
+        },
+        {
+          "text": "Fact D",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "text": "Historical question 18 about the USSR?",
+      "explanationText": "Historical explanation 18.",
+      "orderIndex": 18,
+      "answers": [
+        {
+          "text": "Fact A",
+          "isCorrect": true
+        },
+        {
+          "text": "Fact B",
+          "isCorrect": false
+        },
+        {
+          "text": "Fact C",
+          "isCorrect": false
+        },
+        {
+          "text": "Fact D",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "text": "Historical question 19 about the USSR?",
+      "explanationText": "Historical explanation 19.",
+      "orderIndex": 19,
+      "answers": [
+        {
+          "text": "Fact A",
+          "isCorrect": true
+        },
+        {
+          "text": "Fact B",
+          "isCorrect": false
+        },
+        {
+          "text": "Fact C",
+          "isCorrect": false
+        },
+        {
+          "text": "Fact D",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "text": "Historical question 20 about the USSR?",
+      "explanationText": "Historical explanation 20.",
+      "orderIndex": 20,
+      "answers": [
+        {
+          "text": "Fact A",
+          "isCorrect": true
+        },
+        {
+          "text": "Fact B",
+          "isCorrect": false
+        },
+        {
+          "text": "Fact C",
+          "isCorrect": false
+        },
+        {
+          "text": "Fact D",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "text": "Historical question 21 about the USSR?",
+      "explanationText": "Historical explanation 21.",
+      "orderIndex": 21,
+      "answers": [
+        {
+          "text": "Fact A",
+          "isCorrect": true
+        },
+        {
+          "text": "Fact B",
+          "isCorrect": false
+        },
+        {
+          "text": "Fact C",
+          "isCorrect": false
+        },
+        {
+          "text": "Fact D",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "text": "Historical question 22 about the USSR?",
+      "explanationText": "Historical explanation 22.",
+      "orderIndex": 22,
+      "answers": [
+        {
+          "text": "Fact A",
+          "isCorrect": true
+        },
+        {
+          "text": "Fact B",
+          "isCorrect": false
+        },
+        {
+          "text": "Fact C",
+          "isCorrect": false
+        },
+        {
+          "text": "Fact D",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "text": "Historical question 23 about the USSR?",
+      "explanationText": "Historical explanation 23.",
+      "orderIndex": 23,
+      "answers": [
+        {
+          "text": "Fact A",
+          "isCorrect": true
+        },
+        {
+          "text": "Fact B",
+          "isCorrect": false
+        },
+        {
+          "text": "Fact C",
+          "isCorrect": false
+        },
+        {
+          "text": "Fact D",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "text": "Historical question 24 about the USSR?",
+      "explanationText": "Historical explanation 24.",
+      "orderIndex": 24,
+      "answers": [
+        {
+          "text": "Fact A",
+          "isCorrect": true
+        },
+        {
+          "text": "Fact B",
+          "isCorrect": false
+        },
+        {
+          "text": "Fact C",
+          "isCorrect": false
+        },
+        {
+          "text": "Fact D",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "text": "Historical question 25 about the USSR?",
+      "explanationText": "Historical explanation 25.",
+      "orderIndex": 25,
+      "answers": [
+        {
+          "text": "Fact A",
+          "isCorrect": true
+        },
+        {
+          "text": "Fact B",
+          "isCorrect": false
+        },
+        {
+          "text": "Fact C",
+          "isCorrect": false
+        },
+        {
+          "text": "Fact D",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "text": "Historical question 26 about the USSR?",
+      "explanationText": "Historical explanation 26.",
+      "orderIndex": 26,
+      "answers": [
+        {
+          "text": "Fact A",
+          "isCorrect": true
+        },
+        {
+          "text": "Fact B",
+          "isCorrect": false
+        },
+        {
+          "text": "Fact C",
+          "isCorrect": false
+        },
+        {
+          "text": "Fact D",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "text": "Historical question 27 about the USSR?",
+      "explanationText": "Historical explanation 27.",
+      "orderIndex": 27,
+      "answers": [
+        {
+          "text": "Fact A",
+          "isCorrect": true
+        },
+        {
+          "text": "Fact B",
+          "isCorrect": false
+        },
+        {
+          "text": "Fact C",
+          "isCorrect": false
+        },
+        {
+          "text": "Fact D",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "text": "Historical question 28 about the USSR?",
+      "explanationText": "Historical explanation 28.",
+      "orderIndex": 28,
+      "answers": [
+        {
+          "text": "Fact A",
+          "isCorrect": true
+        },
+        {
+          "text": "Fact B",
+          "isCorrect": false
+        },
+        {
+          "text": "Fact C",
+          "isCorrect": false
+        },
+        {
+          "text": "Fact D",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "text": "Historical question 29 about the USSR?",
+      "explanationText": "Historical explanation 29.",
+      "orderIndex": 29,
+      "answers": [
+        {
+          "text": "Fact A",
+          "isCorrect": true
+        },
+        {
+          "text": "Fact B",
+          "isCorrect": false
+        },
+        {
+          "text": "Fact C",
+          "isCorrect": false
+        },
+        {
+          "text": "Fact D",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "text": "Historical question 30 about the USSR?",
+      "explanationText": "Historical explanation 30.",
+      "orderIndex": 30,
+      "answers": [
+        {
+          "text": "Fact A",
+          "isCorrect": true
+        },
+        {
+          "text": "Fact B",
+          "isCorrect": false
+        },
+        {
+          "text": "Fact C",
+          "isCorrect": false
+        },
+        {
+          "text": "Fact D",
+          "isCorrect": false
+        }
+      ]
+    }
+  ]
+}
