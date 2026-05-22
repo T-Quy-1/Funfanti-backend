@@ -28,6 +28,9 @@ describe('QuestionSetsService', () => {
       findMany: jest.fn(),
       findUnique: jest.fn(),
     },
+    tag: {
+      findMany: jest.fn(),
+    },
     bookmark: {
       findFirst: jest.fn(),
       create: jest.fn(),
@@ -128,6 +131,24 @@ describe('QuestionSetsService', () => {
           take: 10,
         }),
       );
+    });
+  });
+
+  describe('findTags', () => {
+    it('should return alphabetized tag names', async () => {
+      mockPrismaService.tag.findMany.mockResolvedValue([
+        { name: 'History' },
+        { name: 'Science' },
+      ]);
+
+      await expect(service.findTags()).resolves.toEqual([
+        'History',
+        'Science',
+      ]);
+      expect(mockPrismaService.tag.findMany).toHaveBeenCalledWith({
+        orderBy: { name: 'asc' },
+        select: { name: true },
+      });
     });
   });
 

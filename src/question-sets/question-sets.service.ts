@@ -18,6 +18,15 @@ export class QuestionSetsService {
 
   constructor(private readonly prisma: PrismaService) {}
 
+  async findTags() {
+    const tags = await this.prisma.tag.findMany({
+      orderBy: { name: 'asc' },
+      select: { name: true },
+    });
+
+    return tags.map((tag) => tag.name);
+  }
+
   @Cron(CronExpression.EVERY_5_MINUTES)
   async updateAllRatings() {
     this.logger.log('Running periodic rating aggregation...');

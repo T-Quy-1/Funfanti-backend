@@ -68,6 +68,17 @@ export class QuestionSetsController {
     return this.questionSetsService.findAll(query);
   }
 
+  @Get('tags')
+  @ApiOperation({ summary: 'List available question set tags' })
+  @ApiResponse({
+    status: 200,
+    description: 'Available tags for question set filtering.',
+    type: [String],
+  })
+  async findTags() {
+    return this.questionSetsService.findTags();
+  }
+
   @Get(':id')
   @ApiOperation({ summary: 'Get question set details' })
   @ApiParam({ name: 'id', description: 'Question Set ID' })
