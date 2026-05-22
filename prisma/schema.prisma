@@ -45,6 +45,7 @@ model QuestionSet {
   creatorId   String   @map("creator_id") @db.Uuid
   title       String
   description String   @db.Text
+  summary     String   @default("")
   topic       String
   mediaUrl    String?  @map("media_url")
   isFeatured  Boolean  @default(false) @map("is_featured")

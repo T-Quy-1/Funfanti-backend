@@ -10,7 +10,7 @@ describe('QuizSessionsController (e2e)', () => {
   let accessToken: string;
 
   // Use static seeded question set
-  const mathSetId = 'a5f22e84-1849-417f-94ad-731ff58fb810';
+  const mathSetId = 'c9d8e7f6-a5b4-4c3d-b2a1-0123456789cd';
   let question1Id: string;
   let question2Id: string;
 

@@ -12,6 +12,7 @@ describe('QuestionSetsService', () => {
     creatorId: 'creator-uuid',
     title: 'Math Quiz',
     description: 'Test your math skills',
+    summary: 'A short math quiz',
     topic: 'math',
     mediaUrl: null,
     isFeatured: true,

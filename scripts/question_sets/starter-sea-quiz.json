@@ -2,6 +2,7 @@
   "creatorEmail": "creator@example.com",
   "title": "Starter Sea Quiz",
   "description": "A quick starter quiz about the ocean and its wonders.",
+  "summary": "A fun little quiz about fun facts of the sea.",
   "topic": "nature",
   "mediaUrl": "https://res.cloudinary.com/dvtr2aklu/image/upload/v1779448196/funfanti/images/hgskcvk2mrnaghtv8lyw.png",
   "isFeatured": false,

@@ -3,6 +3,7 @@
   "creatorEmail": "creator@example.com",
   "title": "Napoleonic Wars",
   "description": "Test your knowledge on the global conflicts fought during the reign of Napoleon Bonaparte.",
+  "summary": "A 5-question quiz covering key battles and political events of the Napoleonic Era.",
   "topic": "history",
   "mediaUrl": "https://res.cloudinary.com/demo/image/upload/v1612345678/history.jpg",
   "isFeatured": false,

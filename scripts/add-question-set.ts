@@ -25,6 +25,7 @@ interface QuestionSetDto {
   id?: string;
   title: string;
   description: string;
+  summary: string;
   topic: string;
   mediaUrl?: string;
   isFeatured: boolean;
@@ -92,6 +93,7 @@ export async function addQuestionSetFromJson(filePath: string, prismaClient?: Pr
         ...(data.id ? { id: data.id } : {}),
         title: data.title,
         description: data.description,
+        summary: data.summary,
         topic: data.topic,
         mediaUrl: data.mediaUrl,
         isFeatured: data.isFeatured,
