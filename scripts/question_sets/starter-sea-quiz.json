@@ -1,11 +1,12 @@
 {
+  "id": "d1a5b8e9-5c4d-4b3a-9e8f-7c6b5a4d3c2b",
   "creatorEmail": "creator@example.com",
   "title": "Starter Sea Quiz",
   "description": "A quick starter quiz about the ocean and its wonders.",
   "summary": "A fun little quiz about fun facts of the sea.",
   "topic": "nature",
   "mediaUrl": "https://res.cloudinary.com/dvtr2aklu/image/upload/v1779448196/funfanti/images/hgskcvk2mrnaghtv8lyw.png",
-  "isFeatured": false,
+  "isFeatured": true,
   "tags": [
     "Ocean",
     "Nature",

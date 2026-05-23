@@ -53,7 +53,7 @@ export class QuestionSetsService {
     this.logger.log(`Updated ratings for ${aggregations.length} question sets.`);
   }
 
-  async findAll(query: QueryQuestionSetsDto) {
+  async findAll(query: QueryQuestionSetsDto, userId?: string) {
     const {
       topic,
       search,
@@ -142,6 +142,31 @@ export class QuestionSetsService {
       },
     });
 
+    const completedSessionSetIds = userId
+      ? new Set(
+          (
+            await this.prisma.quizSession.findMany({
+              where: {
+                userId,
+                status: 'COMPLETED',
+              },
+              select: { questionSetId: true },
+            })
+          ).map((s) => s.questionSetId),
+        )
+      : new Set<string>();
+
+    const bookmarkedSetIds = userId
+      ? new Set(
+          (
+            await this.prisma.bookmark.findMany({
+              where: { userId },
+              select: { questionSetId: true },
+            })
+          ).map((b) => b.questionSetId),
+        )
+      : new Set<string>();
+
     return questionSets.map((qs) => ({
       id: qs.id,
       title: qs.title,
@@ -157,10 +182,12 @@ export class QuestionSetsService {
       questionCount: qs._count.questions,
       sessionCount: qs._count.sessions,
       createdAt: qs.createdAt,
+      progress: completedSessionSetIds.has(qs.id) ? 1 : 0,
+      isBookmarked: bookmarkedSetIds.has(qs.id),
     }));
   }
 
-  async findOne(id: string) {
+  async findOne(id: string, userId?: string) {
     const qs = await this.prisma.questionSet.findUnique({
       where: { id },
       include: {
@@ -180,6 +207,30 @@ export class QuestionSetsService {
       throw new NotFoundException('Question set not found');
     }
 
+    let progress = 0;
+    let isBookmarked = false;
+    if (userId) {
+      const completedSession = await this.prisma.quizSession.findFirst({
+        where: {
+          userId,
+          questionSetId: id,
+          status: 'COMPLETED',
+        },
+      });
+      if (completedSession) {
+        progress = 1;
+      }
+      const bookmark = await this.prisma.bookmark.findFirst({
+        where: {
+          userId,
+          questionSetId: id,
+        },
+      });
+      if (bookmark) {
+        isBookmarked = true;
+      }
+    }
+
     return {
       id: qs.id,
       title: qs.title,
@@ -195,6 +246,8 @@ export class QuestionSetsService {
       questionCount: qs._count.questions,
       sessionCount: qs._count.sessions,
       createdAt: qs.createdAt,
+      progress,
+      isBookmarked,
     };
   }
 

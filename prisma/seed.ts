@@ -9,6 +9,9 @@ const prisma = new PrismaClient();
 async function main() {
   console.log('Seeding database...');
 
+  // Clear existing question sets to ensure a clean seed and avoid duplicates/conflicts
+  await prisma.questionSet.deleteMany();
+
   // 1. Create a hashed password for seed users
   const passwordHash = await bcrypt.hash('Password123!', 10);
 
