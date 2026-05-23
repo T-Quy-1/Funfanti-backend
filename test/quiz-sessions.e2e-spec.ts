@@ -9,10 +9,10 @@ describe('QuizSessionsController (e2e)', () => {
   let prisma: PrismaService;
   let accessToken: string;
 
-  // Use static seeded question set and question IDs from seed.ts
-  const mathSetId = 'a5f22e84-1849-417f-94ad-731ff58fb810';
-  const question1Id = '1e37452e-c124-4fbb-a297-c256338fb502';
-  const question2Id = 'f87a8c62-11ef-42d4-a8eb-9d8a571f543e';
+  // Use static seeded question set
+  const mathSetId = 'c9d8e7f6-a5b4-4c3d-b2a1-0123456789cd';
+  let question1Id: string;
+  let question2Id: string;
 
   const testEmail = `test-e2e-quiz-${Date.now()}@example.com`;
 
@@ -47,6 +47,14 @@ describe('QuizSessionsController (e2e)', () => {
       .expect(201);
 
     accessToken = res.body.accessToken;
+
+    const questions = await prisma.question.findMany({
+      where: { questionSetId: mathSetId },
+      orderBy: { orderIndex: 'asc' },
+    });
+
+    question1Id = questions[0].id;
+    question2Id = questions[1].id;
 
     // Fetch correct answer IDs from seeded data
     const choices1 = await prisma.answerChoice.findMany({

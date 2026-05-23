@@ -1,0 +1,707 @@
+{
+  "id": "f5d6c7b8-a90b-4cde-b321-123456789abc",
+  "creatorEmail": "creator@example.com",
+  "title": "USSR 101",
+  "description": "Learn about the history of the USSR.",
+  "summary": "Test your knowledge of the Soviet Union's history, leaders, and major milestones.",
+  "topic": "history",
+  "mediaUrl": "https://res.cloudinary.com/dvtr2aklu/image/upload/v1779448197/funfanti/images/octlozjczwkl9it8pdnr.png",
+  "isFeatured": false,
+  "tags": [
+    "History",
+    "Russia",
+    "Modern History"
+  ],
+  "questions": [
+    {
+      "text": "Which event in 1917 led to the fall of the Russian Provisional Government and the rise of the Bolsheviks?",
+      "explanationText": "The October Revolution (also known as the Bolshevik Revolution), led by Vladimir Lenin, overthrew the Russian Provisional Government in 1917.",
+      "orderIndex": 1,
+      "answers": [
+        {
+          "text": "The February Revolution",
+          "isCorrect": false
+        },
+        {
+          "text": "The October Revolution",
+          "isCorrect": true
+        },
+        {
+          "text": "The Decembrist Revolt",
+          "isCorrect": false
+        },
+        {
+          "text": "The Kronstadt Rebellion",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "text": "Who was the first leader and founder of the Soviet Union (USSR)?",
+      "explanationText": "Vladimir Lenin was the founder of the Bolshevik party and the first head of state of the Soviet Union, established in 1922.",
+      "orderIndex": 2,
+      "answers": [
+        {
+          "text": "Joseph Stalin",
+          "isCorrect": false
+        },
+        {
+          "text": "Vladimir Lenin",
+          "isCorrect": true
+        },
+        {
+          "text": "Leon Trotsky",
+          "isCorrect": false
+        },
+        {
+          "text": "Nikita Khrushchev",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "text": "What was the official name of the secret police established by the Bolsheviks in December 1917 to combat counter-revolution?",
+      "explanationText": "The Cheka (All-Russian Extraordinary Commission) was the first Soviet state security organization, founded by Felix Dzerzhinsky.",
+      "orderIndex": 3,
+      "answers": [
+        {
+          "text": "KGB",
+          "isCorrect": false
+        },
+        {
+          "text": "Cheka",
+          "isCorrect": true
+        },
+        {
+          "text": "NKVD",
+          "isCorrect": false
+        },
+        {
+          "text": "Okhrana",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "text": "Which treaty did Bolshevik Russia sign in 1918 to officially end its participation in World War I?",
+      "explanationText": "The Treaty of Brest-Litovsk was signed between Bolshevik Russia and the Central Powers, withdrawing Russia from WWI at the cost of significant territory.",
+      "orderIndex": 4,
+      "answers": [
+        {
+          "text": "Treaty of Versailles",
+          "isCorrect": false
+        },
+        {
+          "text": "Treaty of Brest-Litovsk",
+          "isCorrect": true
+        },
+        {
+          "text": "Treaty of Trianon",
+          "isCorrect": false
+        },
+        {
+          "text": "Treaty of Rapallo",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "text": "What economic policy did Lenin introduce in 1921, which temporarily allowed private trade and small businesses to revive the economy?",
+      "explanationText": "The New Economic Policy (NEP) was a more market-oriented economic policy introduced to rebuild the economy after the Russian Civil War.",
+      "orderIndex": 5,
+      "answers": [
+        {
+          "text": "War Communism",
+          "isCorrect": false
+        },
+        {
+          "text": "The New Economic Policy (NEP)",
+          "isCorrect": true
+        },
+        {
+          "text": "The First Five-Year Plan",
+          "isCorrect": false
+        },
+        {
+          "text": "Collectivization",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "text": "What was the name of the Red Army commander who played a key role in the Bolshevik victory during the Russian Civil War but was later exiled and assassinated?",
+      "explanationText": "Leon Trotsky founded the Red Army. After losing a power struggle to Stalin, he was exiled and eventually assassinated in Mexico in 1940.",
+      "orderIndex": 6,
+      "answers": [
+        {
+          "text": "Leon Trotsky",
+          "isCorrect": true
+        },
+        {
+          "text": "Lev Kamenev",
+          "isCorrect": false
+        },
+        {
+          "text": "Grigory Zinoviev",
+          "isCorrect": false
+        },
+        {
+          "text": "Nikolai Bukharin",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "text": "In which year was the Soviet Union (USSR) officially established?",
+      "explanationText": "The USSR was officially established in December 1922 by a treaty signing between the Russian, Ukrainian, Belarusian, and Transcaucasian republics.",
+      "orderIndex": 7,
+      "answers": [
+        {
+          "text": "1917",
+          "isCorrect": false
+        },
+        {
+          "text": "1922",
+          "isCorrect": true
+        },
+        {
+          "text": "1924",
+          "isCorrect": false
+        },
+        {
+          "text": "1945",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "text": "Which Soviet leader launched the policy of agricultural collectivization and rapid industrialization in the late 1920s?",
+      "explanationText": "Joseph Stalin initiated the Five-Year Plans and forced collectivization, aiming to transform the USSR from an agrarian society to an industrial superpower.",
+      "orderIndex": 8,
+      "answers": [
+        {
+          "text": "Vladimir Lenin",
+          "isCorrect": false
+        },
+        {
+          "text": "Joseph Stalin",
+          "isCorrect": true
+        },
+        {
+          "text": "Nikita Khrushchev",
+          "isCorrect": false
+        },
+        {
+          "text": "Leonid Brezhnev",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "text": "What term is used to describe the state-run system of forced labor camps in the Soviet Union?",
+      "explanationText": "The Gulag was the government agency that administered the main Soviet network of forced labor camps.",
+      "orderIndex": 9,
+      "answers": [
+        {
+          "text": "Gulag",
+          "isCorrect": true
+        },
+        {
+          "text": "Kolkhoz",
+          "isCorrect": false
+        },
+        {
+          "text": "Komsomol",
+          "isCorrect": false
+        },
+        {
+          "text": "Apparat",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "text": "Which Soviet city was subjected to a devastating 872-day military blockade by German forces during World War II?",
+      "explanationText": "The Siege of Leningrad (now Saint Petersburg) lasted from 1941 to 1944, resulting in massive casualties, primarily due to starvation.",
+      "orderIndex": 10,
+      "answers": [
+        {
+          "text": "Moscow",
+          "isCorrect": false
+        },
+        {
+          "text": "Leningrad",
+          "isCorrect": true
+        },
+        {
+          "text": "Stalingrad",
+          "isCorrect": false
+        },
+        {
+          "text": "Kiev",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "text": "Which battle is widely considered the major turning point of World War II on the Eastern Front?",
+      "explanationText": "The Battle of Stalingrad (1942–1943) ended with the surrender of the German 6th Army and turned the tide of the war in favor of the Allies.",
+      "orderIndex": 11,
+      "answers": [
+        {
+          "text": "Battle of Moscow",
+          "isCorrect": false
+        },
+        {
+          "text": "Battle of Stalingrad",
+          "isCorrect": true
+        },
+        {
+          "text": "Battle of Berlin",
+          "isCorrect": false
+        },
+        {
+          "text": "Battle of Kursk",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "text": "Who was the British Prime Minister who coined the term 'Iron Curtain' in 1946 to describe the division of Europe?",
+      "explanationText": "Winston Churchill delivered his famous 'Sinews of Peace' address in Fulton, Missouri, coining the phrase 'Iron Curtain'.",
+      "orderIndex": 12,
+      "answers": [
+        {
+          "text": "Neville Chamberlain",
+          "isCorrect": false
+        },
+        {
+          "text": "Winston Churchill",
+          "isCorrect": true
+        },
+        {
+          "text": "Clement Attlee",
+          "isCorrect": false
+        },
+        {
+          "text": "Franklin D. Roosevelt",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "text": "Which military alliance was formed in 1955 by the Soviet Union and its Eastern European satellite states in response to West Germany joining NATO?",
+      "explanationText": "The Warsaw Pact was a collective defense treaty signed in Warsaw, Poland, between the USSR and seven Soviet satellite states.",
+      "orderIndex": 13,
+      "answers": [
+        {
+          "text": "The Warsaw Pact",
+          "isCorrect": true
+        },
+        {
+          "text": "The Comecon",
+          "isCorrect": false
+        },
+        {
+          "text": "The Non-Aligned Movement",
+          "isCorrect": false
+        },
+        {
+          "text": "The Axis Alliance",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "text": "Who succeeded Joseph Stalin as the leader of the Soviet Union and initiated a period known as the 'Thaw'?",
+      "explanationText": "Nikita Khrushchev led the USSR during the Cold War, initiating 'De-Stalinization' and political relaxation known as the Khrushchev Thaw.",
+      "orderIndex": 14,
+      "answers": [
+        {
+          "text": "Lavrentiy Beria",
+          "isCorrect": false
+        },
+        {
+          "text": "Nikita Khrushchev",
+          "isCorrect": true
+        },
+        {
+          "text": "Georgy Malenkov",
+          "isCorrect": false
+        },
+        {
+          "text": "Leonid Brezhnev",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "text": "In 1956, Khrushchev delivered a secret speech titled 'On the Cult of Personality and Its Consequences.' What was its primary focus?",
+      "explanationText": "Delivered at the 20th Party Congress, the speech criticized Stalin's purges, the cult of personality, and gulags.",
+      "orderIndex": 15,
+      "answers": [
+        {
+          "text": "Praising Stalin's war efforts",
+          "isCorrect": false
+        },
+        {
+          "text": "Denouncing the crimes and excesses of Joseph Stalin",
+          "isCorrect": true
+        },
+        {
+          "text": "Declaring war on the United States",
+          "isCorrect": false
+        },
+        {
+          "text": "Announcing the space program",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "text": "What was the name of the first artificial satellite launched into space by the Soviet Union in 1957?",
+      "explanationText": "Sputnik 1 was launched by the Soviet Union on October 4, 1957, starting the Space Age and the Space Race.",
+      "orderIndex": 16,
+      "answers": [
+        {
+          "text": "Vostok 1",
+          "isCorrect": false
+        },
+        {
+          "text": "Sputnik 1",
+          "isCorrect": true
+        },
+        {
+          "text": "Soyuz",
+          "isCorrect": false
+        },
+        {
+          "text": "Mir",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "text": "Who was the first human to travel into outer space, orbiting the Earth in April 1961?",
+      "explanationText": "Soviet cosmonaut Yuri Gagarin completed one orbit of Earth in his Vostok 1 spacecraft on April 12, 1961.",
+      "orderIndex": 17,
+      "answers": [
+        {
+          "text": "Neil Armstrong",
+          "isCorrect": false
+        },
+        {
+          "text": "Yuri Gagarin",
+          "isCorrect": true
+        },
+        {
+          "text": "Gherman Titov",
+          "isCorrect": false
+        },
+        {
+          "text": "Alexei Leonov",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "text": "Which tense 1962 confrontation brought the US and USSR to the brink of nuclear war?",
+      "explanationText": "The Cuban Missile Crisis occurred when the US discovered Soviet nuclear missiles deployed in Cuba, leading to a 13-day standoff.",
+      "orderIndex": 18,
+      "answers": [
+        {
+          "text": "The Berlin Crisis",
+          "isCorrect": false
+        },
+        {
+          "text": "The Cuban Missile Crisis",
+          "isCorrect": true
+        },
+        {
+          "text": "The U-2 Incident",
+          "isCorrect": false
+        },
+        {
+          "text": "The Suez Crisis",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "text": "Which Soviet leader succeeded Nikita Khrushchev in 1964 and led the country during a period later termed the 'Era of Stagnation'?",
+      "explanationText": "Leonid Brezhnev ruled from 1964 to 1982, marked by political stability but economic stagnation and military build-up.",
+      "orderIndex": 19,
+      "answers": [
+        {
+          "text": "Leonid Brezhnev",
+          "isCorrect": true
+        },
+        {
+          "text": "Yuri Andropov",
+          "isCorrect": false
+        },
+        {
+          "text": "Konstantin Chernenko",
+          "isCorrect": false
+        },
+        {
+          "text": "Mikhail Gorbachev",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "text": "The invasion of which country in 1979 led to a prolonged, ten-year conflict often described as the Soviet Union's 'Vietnam War'?",
+      "explanationText": "The Soviet-Afghan War began in December 1979, draining Soviet military and economic resources and contributing to its collapse.",
+      "orderIndex": 20,
+      "answers": [
+        {
+          "text": "Czechoslovakia",
+          "isCorrect": false
+        },
+        {
+          "text": "Afghanistan",
+          "isCorrect": true
+        },
+        {
+          "text": "Hungary",
+          "isCorrect": false
+        },
+        {
+          "text": "Poland",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "text": "Who became the last General Secretary of the Communist Party of the Soviet Union in 1985?",
+      "explanationText": "Mikhail Gorbachev introduced major reforms to revitalize the USSR but ultimately presided over its dissolution in 1991.",
+      "orderIndex": 21,
+      "answers": [
+        {
+          "text": "Mikhail Gorbachev",
+          "isCorrect": true
+        },
+        {
+          "text": "Boris Yeltsin",
+          "isCorrect": false
+        },
+        {
+          "text": "Yuri Andropov",
+          "isCorrect": false
+        },
+        {
+          "text": "Konstantin Chernenko",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "text": "What did the reform policy 'Glasnost', introduced by Mikhail Gorbachev, translate to?",
+      "explanationText": "Glasnost was the policy of increased transparency in government activities and freedom of information and speech.",
+      "orderIndex": 22,
+      "answers": [
+        {
+          "text": "Economic restructuring",
+          "isCorrect": false
+        },
+        {
+          "text": "Political openness/transparency",
+          "isCorrect": true
+        },
+        {
+          "text": "Accelerated production",
+          "isCorrect": false
+        },
+        {
+          "text": "Democratic elections",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "text": "What did the reform policy 'Perestroika', introduced by Mikhail Gorbachev, translate to?",
+      "explanationText": "Perestroika referred to the restructuring of the Soviet political and economic systems, allowing some private enterprise.",
+      "orderIndex": 23,
+      "answers": [
+        {
+          "text": "Freedom of press",
+          "isCorrect": false
+        },
+        {
+          "text": "Economic restructuring",
+          "isCorrect": true
+        },
+        {
+          "text": "International friendship",
+          "isCorrect": false
+        },
+        {
+          "text": "Social security",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "text": "Which Soviet nuclear power plant was the site of the world's worst civilian nuclear disaster in April 1986?",
+      "explanationText": "The Chernobyl disaster occurred in the Ukrainian SSR, releasing massive amounts of radioactive contamination across Europe.",
+      "orderIndex": 24,
+      "answers": [
+        {
+          "text": "Novovoronezh",
+          "isCorrect": false
+        },
+        {
+          "text": "Chernobyl",
+          "isCorrect": true
+        },
+        {
+          "text": "Kursk",
+          "isCorrect": false
+        },
+        {
+          "text": "Zaporizhzhia",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "text": "What physical barrier, dividing a major European city, was opened in November 1989, symbolizing the collapse of communism in Eastern Europe?",
+      "explanationText": "The fall of the Berlin Wall in November 1989 marked the beginning of the end of the Cold War and communist regimes in Eastern Europe.",
+      "orderIndex": 25,
+      "answers": [
+        {
+          "text": "The Iron Curtain",
+          "isCorrect": false
+        },
+        {
+          "text": "The Berlin Wall",
+          "isCorrect": true
+        },
+        {
+          "text": "The inner German border",
+          "isCorrect": false
+        },
+        {
+          "text": "The Curzon Line",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "text": "What was the name of the attempted coup in August 1991 that sought to depose Mikhail Gorbachev and halt his reform program?",
+      "explanationText": "The August Coup was launched by hardline members of the Communist Party, but failed due to popular resistance led by Boris Yeltsin.",
+      "orderIndex": 26,
+      "answers": [
+        {
+          "text": "The August Coup",
+          "isCorrect": true
+        },
+        {
+          "text": "The Bolshevik Putsch",
+          "isCorrect": false
+        },
+        {
+          "text": "The Decembrist Uprising",
+          "isCorrect": false
+        },
+        {
+          "text": "The Kronstadt Mutiny",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "text": "Who was elected as the first President of the Russian Federation in June 1991, playing a key role in defeating the August Coup?",
+      "explanationText": "Boris Yeltsin became the leader of the Russian Soviet Federative Socialist Republic and emerged as a hero during the August Coup.",
+      "orderIndex": 27,
+      "answers": [
+        {
+          "text": "Mikhail Gorbachev",
+          "isCorrect": false
+        },
+        {
+          "text": "Boris Yeltsin",
+          "isCorrect": true
+        },
+        {
+          "text": "Vladimir Putin",
+          "isCorrect": false
+        },
+        {
+          "text": "Dmitry Medvedev",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "text": "Which agreement, signed in December 1991 by the leaders of Russia, Ukraine, and Belarus, declared the Soviet Union dissolved?",
+      "explanationText": "The Belavezha Accords declared that the USSR had ceased to exist and established the Commonwealth of Independent States (CIS).",
+      "orderIndex": 28,
+      "answers": [
+        {
+          "text": "The Belavezha Accords",
+          "isCorrect": true
+        },
+        {
+          "text": "The Alma-Ata Protocol",
+          "isCorrect": false
+        },
+        {
+          "text": "The Treaty of Warsaw",
+          "isCorrect": false
+        },
+        {
+          "text": "The Helsinki Accords",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "text": "On what date did the Soviet flag over the Kremlin fly for the last time, marking the official end of the Soviet Union?",
+      "explanationText": "On December 25, 1991, Mikhail Gorbachev resigned as President of the USSR, and the Soviet hammer and sickle flag was replaced by the Russian tricolor.",
+      "orderIndex": 29,
+      "answers": [
+        {
+          "text": "November 9, 1989",
+          "isCorrect": false
+        },
+        {
+          "text": "December 25, 1991",
+          "isCorrect": true
+        },
+        {
+          "text": "August 21, 1991",
+          "isCorrect": false
+        },
+        {
+          "text": "January 1, 1992",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "text": "How many sovereign republics emerged as independent nations following the dissolution of the Soviet Union?",
+      "explanationText": "The dissolution of the Soviet Union resulted in 15 independent successor states: Armenia, Azerbaijan, Belarus, Estonia, Georgia, Kazakhstan, Kyrgyzstan, Latvia, Lithuania, Moldova, Russia, Tajikistan, Turkmenistan, Ukraine, and Uzbekistan.",
+      "orderIndex": 30,
+      "answers": [
+        {
+          "text": "12 republics",
+          "isCorrect": false
+        },
+        {
+          "text": "15 republics",
+          "isCorrect": true
+        },
+        {
+          "text": "10 republics",
+          "isCorrect": false
+        },
+        {
+          "text": "20 republics",
+          "isCorrect": false
+        }
+      ]
+    }
+  ]
+}

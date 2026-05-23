@@ -10,8 +10,8 @@ describe('QuestionSetsController (e2e)', () => {
   let accessToken: string;
 
   // Use static seeded question set IDs from seed.ts
-  const mathSetId = 'a5f22e84-1849-417f-94ad-731ff58fb810';
-  const scienceSetId = 'b2c93d95-2950-528f-a5be-842ff69fc921';
+  const historySetId = 'c9d8e7f6-a5b4-4c3d-b2a1-0123456789cd'; // Napoleonic Wars
+  const natureSetId = 'e8a1f23b-5c4d-4e6a-bf89-0123456789ab'; // Aquatic Ecosystems
 
   const testEmail = `test-e2e-qs-${Date.now()}@example.com`;
 
@@ -63,14 +63,14 @@ describe('QuestionSetsController (e2e)', () => {
       expect(res.body.length).toBeGreaterThanOrEqual(2);
     });
 
-    it('should filter by topic=math', async () => {
+    it('should filter by topic=history', async () => {
       const res = await request(app.getHttpServer())
-        .get('/question-sets?topic=math')
+        .get('/question-sets?topic=history')
         .expect(200);
 
       expect(res.body.length).toBeGreaterThanOrEqual(1);
       expect(
-        res.body.every((qs: any) => qs.topic.toLowerCase() === 'math'),
+        res.body.every((qs: any) => qs.topic.toLowerCase() === 'history'),
       ).toBe(true);
     });
 
@@ -95,11 +95,11 @@ describe('QuestionSetsController (e2e)', () => {
   describe('GET /question-sets/:id', () => {
     it('should return question set details', async () => {
       const res = await request(app.getHttpServer())
-        .get(`/question-sets/${mathSetId}`)
+        .get(`/question-sets/${historySetId}`)
         .expect(200);
 
-      expect(res.body.id).toBe(mathSetId);
-      expect(res.body.title).toBe('Mental Math Magic');
+      expect(res.body.id).toBe(historySetId);
+      expect(res.body.title).toBe('Napoleonic Wars');
       expect(res.body.tags).toBeDefined();
       expect(res.body.creator).toBeDefined();
     });
@@ -114,10 +114,10 @@ describe('QuestionSetsController (e2e)', () => {
   describe('GET /question-sets/:id/questions', () => {
     it('should return aggregated questions with choices', async () => {
       const res = await request(app.getHttpServer())
-        .get(`/question-sets/${mathSetId}/questions`)
+        .get(`/question-sets/${historySetId}/questions`)
         .expect(200);
 
-      expect(res.body.id).toBe(mathSetId);
+      expect(res.body.id).toBe(historySetId);
       expect(res.body.questions).toBeDefined();
       expect(res.body.questions.length).toBeGreaterThanOrEqual(1);
       expect(res.body.questions[0].choices).toBeDefined();
@@ -128,7 +128,7 @@ describe('QuestionSetsController (e2e)', () => {
   describe('POST/DELETE /question-sets/:id/bookmark', () => {
     it('should create a bookmark', async () => {
       const res = await request(app.getHttpServer())
-        .post(`/question-sets/${mathSetId}/bookmark`)
+        .post(`/question-sets/${historySetId}/bookmark`)
         .set('Authorization', `Bearer ${accessToken}`)
         .expect(201);
 
@@ -137,14 +137,14 @@ describe('QuestionSetsController (e2e)', () => {
 
     it('should return 409 if already bookmarked', async () => {
       await request(app.getHttpServer())
-        .post(`/question-sets/${mathSetId}/bookmark`)
+        .post(`/question-sets/${historySetId}/bookmark`)
         .set('Authorization', `Bearer ${accessToken}`)
         .expect(409);
     });
 
     it('should remove a bookmark', async () => {
       const res = await request(app.getHttpServer())
-        .delete(`/question-sets/${mathSetId}/bookmark`)
+        .delete(`/question-sets/${historySetId}/bookmark`)
         .set('Authorization', `Bearer ${accessToken}`)
         .expect(200);
 
@@ -153,14 +153,14 @@ describe('QuestionSetsController (e2e)', () => {
 
     it('should return 404 when removing non-existent bookmark', async () => {
       await request(app.getHttpServer())
-        .delete(`/question-sets/${mathSetId}/bookmark`)
+        .delete(`/question-sets/${historySetId}/bookmark`)
         .set('Authorization', `Bearer ${accessToken}`)
         .expect(404);
     });
 
     it('should return 401 without auth token', async () => {
       await request(app.getHttpServer())
-        .post(`/question-sets/${mathSetId}/bookmark`)
+        .post(`/question-sets/${historySetId}/bookmark`)
         .expect(401);
     });
   });
