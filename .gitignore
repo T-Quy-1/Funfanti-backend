@@ -1,9 +1,37 @@
-# compiled output
+# =========================================================================
+# 1. COMPILED OUTPUT & DEPENDENCIES (RAM & Cache Build)
+# =========================================================================
 /dist
 /node_modules
 /build
+/.tscache
+/package-lock.json
+/yarn.lock
+/pnpm-lock.yaml
 
-# Logs
+# =========================================================================
+# 2. PRISMA & DATABASE LOCAL (Runtime Exception Control)
+# =========================================================================
+*.db
+*.db-journal
+*.sqlite
+*.sqlite-journal
+
+.docker/data
+
+# =========================================================================
+# 3. DOTENV ENVIRONMENT VARIABLES 
+# =========================================================================
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.env
+
+# =========================================================================
+# 4. LOGS & DIAGNOSTICS
+# =========================================================================
 logs
 *.log
 npm-debug.log*
@@ -11,17 +39,25 @@ pnpm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
+pids
+*.pid
+*.seed
+*.pid.lock
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 
+# =========================================================================
+# 5. OS & INTEGRATED DEVELOPMENT ENVIRONMENTS (IDEs)
+# =========================================================================
 # OS
 .DS_Store
+Thumbs.db
 
-# Tests
-/coverage
-/.nyc_output
-scripts
+# JetBrains (WebStorm, IntelliJ)
+/.idea/
 
-# IDEs and editors
-/.idea
+# VS Code
+.vscode/
+
 .project
 .classpath
 .c9/
@@ -29,32 +65,19 @@ scripts
 .settings/
 *.sublime-workspace
 
-# IDE - VSCode
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
+# =========================================================================
+# 6. TESTING & COVERAGE
+# =========================================================================
+/coverage
+/.nyc_output
+.jest
 
-# dotenv environment variable files
-.env
-.env.development.local
-.env.test.local
-.env.production.local
-.env.local
-
-# temp directory
+# =========================================================================
+# 7. SPECIFIC ASSET FILTERS
+# =========================================================================
 .temp
 .tmp
+*.bat
 
-# Runtime data
-pids
-*.pid
-*.seed
-*.pid.lock
-
-# Diagnostic reports (https://nodejs.org/api/report.html)
-report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
-
-#images
-*.png
+/src/assets/tmp/
+/uploads/

@@ -12,6 +12,7 @@ describe('QuestionSetsService', () => {
     creatorId: 'creator-uuid',
     title: 'Math Quiz',
     description: 'Test your math skills',
+    summary: 'A short math quiz',
     topic: 'math',
     mediaUrl: null,
     isFeatured: true,
@@ -26,6 +27,9 @@ describe('QuestionSetsService', () => {
     questionSet: {
       findMany: jest.fn(),
       findUnique: jest.fn(),
+    },
+    tag: {
+      findMany: jest.fn(),
     },
     bookmark: {
       findFirst: jest.fn(),
@@ -127,6 +131,24 @@ describe('QuestionSetsService', () => {
           take: 10,
         }),
       );
+    });
+  });
+
+  describe('findTags', () => {
+    it('should return alphabetized tag names', async () => {
+      mockPrismaService.tag.findMany.mockResolvedValue([
+        { name: 'History' },
+        { name: 'Science' },
+      ]);
+
+      await expect(service.findTags()).resolves.toEqual([
+        'History',
+        'Science',
+      ]);
+      expect(mockPrismaService.tag.findMany).toHaveBeenCalledWith({
+        orderBy: { name: 'asc' },
+        select: { name: true },
+      });
     });
   });
 

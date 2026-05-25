@@ -58,6 +58,9 @@ export class QuestionSetResponseDto {
   @ApiProperty({ example: 'Learn about countries and capitals.' })
   description!: string;
 
+  @ApiProperty({ example: 'A short introduction to geography basics.' })
+  summary!: string;
+
   @ApiProperty({ example: 'geography' })
   topic!: string;
 

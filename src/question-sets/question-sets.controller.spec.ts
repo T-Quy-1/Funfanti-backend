@@ -8,6 +8,7 @@ describe('QuestionSetsController', () => {
 
   const mockQuestionSetsService = {
     findAll: jest.fn(),
+    findTags: jest.fn(),
     findOne: jest.fn(),
     getQuestions: jest.fn(),
     bookmark: jest.fn(),
@@ -42,6 +43,16 @@ describe('QuestionSetsController', () => {
 
     await expect(controller.findAll(query)).resolves.toEqual([]);
     expect(mockQuestionSetsService.findAll).toHaveBeenCalledWith(query);
+  });
+
+  it('should delegate tag lookups to QuestionSetsService', async () => {
+    mockQuestionSetsService.findTags.mockResolvedValue(['History', 'Science']);
+
+    await expect(controller.findTags()).resolves.toEqual([
+      'History',
+      'Science',
+    ]);
+    expect(mockQuestionSetsService.findTags).toHaveBeenCalledTimes(1);
   });
 
   it('should delegate detail and questions lookups', async () => {

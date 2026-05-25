@@ -1,0 +1,362 @@
+{
+  "id": "e8a1f23b-5c4d-4e6a-bf89-0123456789ab",
+  "creatorEmail": "creator@example.com",
+  "title": "Aquatic Ecosystems",
+  "description": "Dive deep into the ecosystems of our planet's waters.",
+  "summary": "A comprehensive deep dive into marine, freshwater, and coastal ecosystems, their food chains, and human impacts.",
+  "topic": "nature",
+  "mediaUrl": "https://res.cloudinary.com/dvtr2aklu/image/upload/v1779448194/funfanti/images/xk6gkjuqzddztgeskooe.png",
+  "isFeatured": false,
+  "tags": [
+    "Ocean",
+    "Nature",
+    "Ecosystems"
+  ],
+  "questions": [
+    {
+      "text": "What percentage of Earth's water is salt water found in oceans and seas?",
+      "explanationText": "About 97% of Earth's water is saline, found in oceans. Only about 3% is freshwater, and most of that is locked in ice caps and glaciers.",
+      "orderIndex": 1,
+      "answers": [
+        {
+          "text": "Around 97%",
+          "isCorrect": true
+        },
+        {
+          "text": "Around 70%",
+          "isCorrect": false
+        },
+        {
+          "text": "Around 50%",
+          "isCorrect": false
+        },
+        {
+          "text": "Around 3%",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "text": "Which ocean zone receives the most sunlight, allowing photosynthesis to occur?",
+      "explanationText": "The photic or epipelagic zone is the top layer of the ocean (down to about 200 meters) where sunlight penetrates sufficiently for photosynthesis.",
+      "orderIndex": 2,
+      "answers": [
+        {
+          "text": "Abyssal zone",
+          "isCorrect": false
+        },
+        {
+          "text": "Photic (Epipelagic) zone",
+          "isCorrect": true
+        },
+        {
+          "text": "Bathypelagic zone",
+          "isCorrect": false
+        },
+        {
+          "text": "Mesopelagic zone",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "text": "What type of tiny, photosynthetic organisms form the base of most marine food webs?",
+      "explanationText": "Phytoplankton are microscopic marine algae that perform photosynthesis, producing oxygen and serving as the primary producers in the ocean.",
+      "orderIndex": 3,
+      "answers": [
+        {
+          "text": "Phytoplankton",
+          "isCorrect": true
+        },
+        {
+          "text": "Zooplankton",
+          "isCorrect": false
+        },
+        {
+          "text": "Anemones",
+          "isCorrect": false
+        },
+        {
+          "text": "Coral polyps",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "text": "Coral reefs are built by colonies of tiny animals called polyps. Which organism lives symbiotically within them to provide food?",
+      "explanationText": "Zooxanthellae are photosynthetic algae that live inside coral tissues, providing corals with food and giving them their vibrant colors.",
+      "orderIndex": 4,
+      "answers": [
+        {
+          "text": "Clownfish",
+          "isCorrect": false
+        },
+        {
+          "text": "Zooxanthellae",
+          "isCorrect": true
+        },
+        {
+          "text": "Sea urchins",
+          "isCorrect": false
+        },
+        {
+          "text": "Barnacles",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "text": "What term describes a partially enclosed coastal body of water where freshwater from rivers mixes with salty ocean water?",
+      "explanationText": "An estuary is a highly productive transition zone where freshwater streams mix with saltwater from the ocean.",
+      "orderIndex": 5,
+      "answers": [
+        {
+          "text": "Estuary",
+          "isCorrect": true
+        },
+        {
+          "text": "Lagoon",
+          "isCorrect": false
+        },
+        {
+          "text": "Fjord",
+          "isCorrect": false
+        },
+        {
+          "text": "Gulf",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "text": "What is the primary cause of ocean acidification?",
+      "explanationText": "Ocean acidification is primarily caused by the ocean absorbing excess carbon dioxide (CO2) from the atmosphere, forming carbonic acid.",
+      "orderIndex": 6,
+      "answers": [
+        {
+          "text": "Plastic pollution",
+          "isCorrect": false
+        },
+        {
+          "text": "Absorption of excess carbon dioxide (CO2)",
+          "isCorrect": true
+        },
+        {
+          "text": "Oil spills",
+          "isCorrect": false
+        },
+        {
+          "text": "Acid rain from volcanoes",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "text": "Which deep-sea ecosystem relies on geothermal energy and chemical synthesis rather than sunlight?",
+      "explanationText": "Hydrothermal vents support unique ecosystems through chemosynthesis, where bacteria convert mineral-rich chemical compounds from the Earth's crust into energy.",
+      "orderIndex": 7,
+      "answers": [
+        {
+          "text": "Hydrothermal vents",
+          "isCorrect": true
+        },
+        {
+          "text": "Kelp forests",
+          "isCorrect": false
+        },
+        {
+          "text": "Estuaries",
+          "isCorrect": false
+        },
+        {
+          "text": "Tide pools",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "text": "What is 'marine snow'?",
+      "explanationText": "Marine snow is a continuous shower of organic material (detritus, dead plankton, fecal matter) falling from the upper waters to the deep ocean, feeding deep-sea organisms.",
+      "orderIndex": 8,
+      "answers": [
+        {
+          "text": "Underwater volcanic ash",
+          "isCorrect": false
+        },
+        {
+          "text": "Organic debris falling from upper water layers to the deep ocean",
+          "isCorrect": true
+        },
+        {
+          "text": "Microscopic microplastics",
+          "isCorrect": false
+        },
+        {
+          "text": "Frozen sea foam",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "text": "Which of the following is the largest living structure on Earth, visible from space?",
+      "explanationText": "Located in Australia, the Great Barrier Reef is the largest coral reef system and the largest living structure on Earth.",
+      "orderIndex": 9,
+      "answers": [
+        {
+          "text": "The Amazon Rainforest",
+          "isCorrect": false
+        },
+        {
+          "text": "The Great Barrier Reef",
+          "isCorrect": true
+        },
+        {
+          "text": "The Giant Sequoia Forest",
+          "isCorrect": false
+        },
+        {
+          "text": "The Sargasso Sea kelp bed",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "text": "What phenomenon occurs when corals expel their symbiotic algae due to stress, such as warming water temperatures?",
+      "explanationText": "Coral bleaching happens when stressed corals expel their zooxanthellae, turning white and leaving them vulnerable to disease and starvation.",
+      "orderIndex": 10,
+      "answers": [
+        {
+          "text": "Coral bleaching",
+          "isCorrect": true
+        },
+        {
+          "text": "Coral calcification",
+          "isCorrect": false
+        },
+        {
+          "text": "Eutrophication",
+          "isCorrect": false
+        },
+        {
+          "text": "Algal bloom",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "text": "What term is used to describe the transition zone between two different ecosystems, such as where land meets sea?",
+      "explanationText": "An ecotone is a region of transition between two biological communities, containing species from both and often exhibiting high biodiversity.",
+      "orderIndex": 11,
+      "answers": [
+        {
+          "text": "Ecotone",
+          "isCorrect": true
+        },
+        {
+          "text": "Biome",
+          "isCorrect": false
+        },
+        {
+          "text": "Niche",
+          "isCorrect": false
+        },
+        {
+          "text": "Climax community",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "text": "What is the main driver of global ocean currents, often called the 'Great Ocean Conveyor Belt'?",
+      "explanationText": "Thermohaline circulation is driven by global density gradients created by surface heat and freshwater fluxes (temperature and salinity).",
+      "orderIndex": 12,
+      "answers": [
+        {
+          "text": "Wind patterns only",
+          "isCorrect": false
+        },
+        {
+          "text": "Thermohaline circulation (temperature and salinity)",
+          "isCorrect": true
+        },
+        {
+          "text": "The Moon's gravitational pull",
+          "isCorrect": false
+        },
+        {
+          "text": "Underwater volcanic eruptions",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "text": "Which marine biome is characterized by trees with specialized root systems that can filter salt and thrive in coastal intertidal zones?",
+      "explanationText": "Mangroves are salt-tolerant trees that grow in coastal saline or brackish water, protecting coastlines from erosion and storm surges.",
+      "orderIndex": 13,
+      "answers": [
+        {
+          "text": "Kelp forests",
+          "isCorrect": false
+        },
+        {
+          "text": "Mangrove forests",
+          "isCorrect": true
+        },
+        {
+          "text": "Salt marshes",
+          "isCorrect": false
+        },
+        {
+          "text": "Coral reefs",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "text": "What is eutrophication?",
+      "explanationText": "Eutrophication is caused by runoff (like agricultural fertilizers) containing nitrogen and phosphorus, causing rapid algae growth that depletes oxygen when it dies and decomposes.",
+      "orderIndex": 14,
+      "answers": [
+        {
+          "text": "The process of water becoming more acidic",
+          "isCorrect": false
+        },
+        {
+          "text": "The accumulation of plastic waste in ocean gyres",
+          "isCorrect": false
+        },
+        {
+          "text": "Excessive nutrient enrichment in a body of water, leading to algal blooms and oxygen depletion",
+          "isCorrect": true
+        },
+        {
+          "text": "The natural evaporation of freshwater lakes",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "text": "What is the maximum depth of the Mariana Trench, the deepest known point in the Earth's oceans?",
+      "explanationText": "The Challenger Deep in the Mariana Trench is the deepest known point in Earth's oceans, reaching a depth of nearly 11,000 meters (approx. 36,000 feet).",
+      "orderIndex": 15,
+      "answers": [
+        {
+          "text": "Approximately 11,000 meters (36,000 feet)",
+          "isCorrect": true
+        },
+        {
+          "text": "Approximately 5,000 meters (16,400 feet)",
+          "isCorrect": false
+        },
+        {
+          "text": "Approximately 15,000 meters (49,200 feet)",
+          "isCorrect": false
+        },
+        {
+          "text": "Approximately 8,000 meters (26,200 feet)",
+          "isCorrect": false
+        }
+      ]
+    }
+  ]
+}

@@ -26,8 +26,8 @@ async function bootstrap() {
     )
     .setVersion('1.0.0')
     .addBearerAuth()
-    // Thêm link server Vercel của bạn vào đây
-    .addServer('https://funfanti-backend.vercel.app', 'Production server')
+    // Railway will host the actual backend logic and DB
+    .addServer('https://[YOUR-RAILWAY-APP-NAME].up.railway.app', 'Railway Production Server')
     .addServer('http://localhost:3000', 'Local development')
     .build();
 
@@ -97,6 +97,12 @@ async function bootstrap() {
   // 4. Port cho Vercel
   const port = process.env.PORT || 3000;
   await app.listen(port, '0.0.0.0');
-  console.log(`Application is running on: ${await app.getUrl()}`);
+  
+  const url = await app.getUrl();
+  // Thay thế [::1] hoặc 127.0.0.1 bằng localhost để dễ click/copy trong terminal
+  const displayUrl = url.replace('[::1]', 'localhost').replace('127.0.0.1', 'localhost');
+  
+  console.log(`\n🚀 Application is running on: ${displayUrl}`);
+  console.log(`📝 Swagger UI available at: ${displayUrl}/api\n`);
 }
 void bootstrap();

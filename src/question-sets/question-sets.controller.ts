@@ -25,6 +25,7 @@ import {
 } from './dto/question-sets.dto';
 import { QueryQuestionSetsDto } from './dto/query-question-sets.dto';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
+import { OptionalJwtAuthGuard } from '../auth/guards/optional-jwt-auth.guard';
 import { CurrentUser } from '../auth/decorators/current-user.decorator';
 
 type AuthenticatedUser = {
@@ -64,7 +65,14 @@ export class QuestionSetsController {
     description: 'List of question sets.',
     type: [QuestionSetResponseDto],
   })
-  async findAll(@Query() query: QueryQuestionSetsDto) {
+  @UseGuards(OptionalJwtAuthGuard)
+  async findAll(
+    @Query() query: QueryQuestionSetsDto,
+    @CurrentUser() user?: AuthenticatedUser | null,
+  ) {
+    if (user) {
+      return this.questionSetsService.findAll(query, user.id);
+    }
     return this.questionSetsService.findAll(query);
   }
 
@@ -88,7 +96,14 @@ export class QuestionSetsController {
     type: QuestionSetResponseDto,
   })
   @ApiResponse({ status: 404, description: 'Question set not found.' })
-  async findOne(@Param('id', ParseUUIDPipe) id: string) {
+  @UseGuards(OptionalJwtAuthGuard)
+  async findOne(
+    @Param('id', ParseUUIDPipe) id: string,
+    @CurrentUser() user?: AuthenticatedUser | null,
+  ) {
+    if (user) {
+      return this.questionSetsService.findOne(id, user.id);
+    }
     return this.questionSetsService.findOne(id);
   }
 
