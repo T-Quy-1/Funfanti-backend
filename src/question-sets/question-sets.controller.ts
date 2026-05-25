@@ -35,7 +35,7 @@ type AuthenticatedUser = {
 @ApiTags('Question Sets')
 @Controller('question-sets')
 export class QuestionSetsController {
-  constructor(private readonly questionSetsService: QuestionSetsService) {}
+  constructor(private readonly questionSetsService: QuestionSetsService) { }
 
   @Get()
   @ApiOperation({ summary: 'Discover question sets with filters' })
@@ -77,14 +77,14 @@ export class QuestionSetsController {
   }
 
   @Get('tags')
-  @ApiOperation({ summary: 'List all question set tags' })
+  @ApiOperation({ summary: 'List available question set tags' })
   @ApiResponse({
     status: 200,
-    description: 'List of tag names.',
+    description: 'Available tags for question set filtering.',
     type: [String],
   })
-  async getTags() {
-    return this.questionSetsService.getTags();
+  async findTags() {
+    return this.questionSetsService.findTags();
   }
 
   @Get(':id')

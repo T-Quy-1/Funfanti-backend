@@ -16,7 +16,7 @@ import {
 export class QuestionSetsService {
   private readonly logger = new Logger(QuestionSetsService.name);
 
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(private readonly prisma: PrismaService) { }
 
   async findTags() {
     const tags = await this.prisma.tag.findMany({
@@ -146,27 +146,27 @@ export class QuestionSetsService {
 
     const completedSessionSetIds = userId
       ? new Set(
-          (
-            await this.prisma.quizSession.findMany({
-              where: {
-                userId,
-                status: 'COMPLETED',
-              },
-              select: { questionSetId: true },
-            })
-          ).map((s) => s.questionSetId),
-        )
+        (
+          await this.prisma.quizSession.findMany({
+            where: {
+              userId,
+              status: 'COMPLETED',
+            },
+            select: { questionSetId: true },
+          })
+        ).map((s) => s.questionSetId),
+      )
       : new Set<string>();
 
     const bookmarkedSetIds = userId
       ? new Set(
-          (
-            await this.prisma.bookmark.findMany({
-              where: { userId },
-              select: { questionSetId: true },
-            })
-          ).map((b) => b.questionSetId),
-        )
+        (
+          await this.prisma.bookmark.findMany({
+            where: { userId },
+            select: { questionSetId: true },
+          })
+        ).map((b) => b.questionSetId),
+      )
       : new Set<string>();
 
     return questionSets.map((qs) => ({
@@ -188,24 +188,6 @@ export class QuestionSetsService {
       isBookmarked: bookmarkedSetIds.has(qs.id),
     }));
   }
-
-  async getTags() {
-    const tags = await this.prisma.tag.findMany({
-      orderBy: { name: 'asc' },
-      select: { name: true },
-    });
-
-    return tags.map((tag) => tag.name);
-  }
-
-  // async getTags() {
-  //   const tags = await this.prisma.tag.findMany({
-  //     orderBy: { name: 'asc' },
-  //     select: { name: true },
-  //   });
-
-  //   return tags.map((tag) => tag.name);
-  // }
 
   async findOne(id: string, userId?: string) {
     const qs = await this.prisma.questionSet.findUnique({
