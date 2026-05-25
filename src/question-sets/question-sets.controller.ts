@@ -35,7 +35,7 @@ type AuthenticatedUser = {
 @ApiTags('Question Sets')
 @Controller('question-sets')
 export class QuestionSetsController {
-  constructor(private readonly questionSetsService: QuestionSetsService) {}
+  constructor(private readonly questionSetsService: QuestionSetsService) { }
 
   @Get()
   @ApiOperation({ summary: 'Discover question sets with filters' })

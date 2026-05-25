@@ -16,7 +16,7 @@ import {
 export class QuestionSetsService {
   private readonly logger = new Logger(QuestionSetsService.name);
 
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(private readonly prisma: PrismaService) { }
 
   async findTags() {
     const tags = await this.prisma.tag.findMany({
@@ -30,7 +30,7 @@ export class QuestionSetsService {
   @Cron(CronExpression.EVERY_5_MINUTES)
   async updateAllRatings() {
     this.logger.log('Running periodic rating aggregation...');
-    
+
     // Group all reviews by questionSetId and calculate averages/counts
     const aggregations = await this.prisma.review.groupBy({
       by: ['questionSetId'],
@@ -40,7 +40,7 @@ export class QuestionSetsService {
 
     for (const agg of aggregations) {
       if (!agg._avg.rating) continue;
-      
+
       await this.prisma.questionSet.update({
         where: { id: agg.questionSetId },
         data: {
@@ -49,8 +49,10 @@ export class QuestionSetsService {
         },
       });
     }
-    
-    this.logger.log(`Updated ratings for ${aggregations.length} question sets.`);
+
+    this.logger.log(
+      `Updated ratings for ${aggregations.length} question sets.`,
+    );
   }
 
   async findAll(query: QueryQuestionSetsDto, userId?: string) {
@@ -70,7 +72,7 @@ export class QuestionSetsService {
     const skip = (page - 1) * limit;
 
     const where: Prisma.QuestionSetWhereInput = {};
-    
+
     if (topic) {
       where.topic = { equals: topic, mode: 'insensitive' };
     }
@@ -144,27 +146,27 @@ export class QuestionSetsService {
 
     const completedSessionSetIds = userId
       ? new Set(
-          (
-            await this.prisma.quizSession.findMany({
-              where: {
-                userId,
-                status: 'COMPLETED',
-              },
-              select: { questionSetId: true },
-            })
-          ).map((s) => s.questionSetId),
-        )
+        (
+          await this.prisma.quizSession.findMany({
+            where: {
+              userId,
+              status: 'COMPLETED',
+            },
+            select: { questionSetId: true },
+          })
+        ).map((s) => s.questionSetId),
+      )
       : new Set<string>();
 
     const bookmarkedSetIds = userId
       ? new Set(
-          (
-            await this.prisma.bookmark.findMany({
-              where: { userId },
-              select: { questionSetId: true },
-            })
-          ).map((b) => b.questionSetId),
-        )
+        (
+          await this.prisma.bookmark.findMany({
+            where: { userId },
+            select: { questionSetId: true },
+          })
+        ).map((b) => b.questionSetId),
+      )
       : new Set<string>();
 
     return questionSets.map((qs) => ({
