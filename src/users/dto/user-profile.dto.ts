@@ -10,7 +10,13 @@ export class UserPreferenceDto {
   @ApiProperty()
   notificationOverlay!: boolean;
 
-  @ApiProperty({ required: false })
+  @ApiProperty({
+    required: false,
+    example: {
+      intervals: [{ startTime: '08:00', endTime: '12:00' }],
+      checkIntervalMinutes: 15,
+    },
+  })
   lockScreenTiming?: unknown;
 }
 

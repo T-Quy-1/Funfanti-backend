@@ -37,8 +37,12 @@ export class UpdatePreferencesDto {
   notificationOverlay?: boolean;
 
   @ApiProperty({
-    example: { morning: '08:00', lunch: '12:30' },
-    description: 'JSON describing lock-screen schedule',
+    example: {
+      intervals: [{ startTime: '08:00', endTime: '12:00' }],
+      checkIntervalMinutes: 15,
+    },
+    description:
+      'JSON describing lock-screen popup windows. Legacy exact-time keys are accepted for backward compatibility.',
     required: false,
   })
   @IsOptional()
