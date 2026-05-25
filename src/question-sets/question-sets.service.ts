@@ -71,6 +71,15 @@ export class QuestionSetsService {
     }));
   }
 
+  async getTags() {
+    const tags = await this.prisma.tag.findMany({
+      orderBy: { name: 'asc' },
+      select: { name: true },
+    });
+
+    return tags.map((tag) => tag.name);
+  }
+
   async findOne(id: string) {
     const qs = await this.prisma.questionSet.findUnique({
       where: { id },
