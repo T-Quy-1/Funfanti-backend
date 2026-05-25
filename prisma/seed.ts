@@ -28,7 +28,13 @@ async function main() {
           theme: 'dark',
           hapticsEnabled: true,
           notificationOverlay: true,
-          lockScreenTiming: { morning: '08:00', evening: '20:00' },
+          lockScreenTiming: {
+            intervals: [
+              { startTime: '08:00', endTime: '12:00' },
+              { startTime: '18:00', endTime: '22:00' },
+            ],
+            checkIntervalMinutes: 15,
+          },
         },
       },
     },
@@ -46,7 +52,10 @@ async function main() {
           theme: 'system',
           hapticsEnabled: true,
           notificationOverlay: false,
-          lockScreenTiming: { noon: '12:00' },
+          lockScreenTiming: {
+            intervals: [{ startTime: '12:00', endTime: '13:00' }],
+            checkIntervalMinutes: 30,
+          },
         },
       },
     },
