@@ -109,6 +109,15 @@ async function bootstrapServer() {
 }
 
 export default async function (req: Request, res: Response) {
-  const server = await bootstrapServer();
-  return server(req, res);
+  try {
+    const server = await bootstrapServer();
+    return server(req, res);
+  } catch (error: any) {
+    console.error('NestJS Bootstrap Error:', error);
+    res.status(500).json({ 
+      error: 'Internal Server Error during NestJS bootstrap', 
+      message: error.message,
+      stack: error.stack
+    });
+  }
 }
