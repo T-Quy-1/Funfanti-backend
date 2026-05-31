@@ -1,46 +1,51 @@
 import { NestFactory } from '@nestjs/core';
 import { ValidationPipe } from '@nestjs/common';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
+import { ExpressAdapter } from '@nestjs/platform-express';
 import type { Request, Response } from 'express';
+import express from 'express';
 import { AppModule } from './app.module';
 
-async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+// 1. Biến toàn cục để cache lại server trên Vercel, giúp giảm thời gian cold start
+let cachedServer: express.Express | undefined;
 
-  // 1. Bật CORS để App Expo có thể gọi API
-  app.enableCors();
+async function bootstrapServer(): Promise<express.Express> {
+  // Nếu đã có server cache thì tái sử dụng, không khởi tạo lại NestJS
+  if (!cachedServer) {
+    const expressApp = express();
+    const app = await NestFactory.create(AppModule, new ExpressAdapter(expressApp));
 
-  app.useGlobalPipes(
-    new ValidationPipe({
-      whitelist: true,
-      forbidNonWhitelisted: true,
-      transform: true,
-    }),
-  );
+    // Bật CORS để App Expo có thể gọi API
+    app.enableCors();
 
-  // 2. Cấu hình Swagger
-  const config = new DocumentBuilder()
-    .setTitle('Funfanti API')
-    .setDescription(
-      'Official backend API documentation for Funfanti micro-learning app.',
-    )
-    .setVersion('1.0.0')
-    .addBearerAuth()
-    // Railway will host the actual backend logic and DB
-    .addServer('https://[YOUR-RAILWAY-APP-NAME].up.railway.app', 'Railway Production Server')
-    .addServer('http://localhost:3000', 'Local development')
-    .build();
+    app.useGlobalPipes(
+      new ValidationPipe({
+        whitelist: true,
+        forbidNonWhitelisted: true,
+        transform: true,
+      }),
+    );
 
-  const document = SwaggerModule.createDocument(app, config);
+    // Cấu hình Swagger
+    const config = new DocumentBuilder()
+      .setTitle('Funfanti API')
+      .setDescription('Official backend API documentation for Funfanti micro-learning app.')
+      .setVersion('1.0.0')
+      .addBearerAuth()
+      .addServer('https://[YOUR-RAILWAY-APP-NAME].up.railway.app', 'Railway Production Server')
+      .addServer('http://localhost:3000', 'Local development')
+      .build();
 
-  // 3. Chỉ expose OpenAPI JSON từ Nest, UI sẽ dùng CDN để tránh thiếu asset trên Vercel
-  SwaggerModule.setup('api', app, document, {
-    ui: false,
-    raw: ['json'],
-    jsonDocumentUrl: 'api-json',
-  });
+    const document = SwaggerModule.createDocument(app, config);
 
-  const swaggerHtml = `<!DOCTYPE html>
+    // Chỉ expose OpenAPI JSON từ Nest
+    SwaggerModule.setup('api', app, document, {
+      ui: false,
+      raw: ['json'],
+      jsonDocumentUrl: 'api-json', // Route này sẽ sinh ra /api-json
+    });
+
+    const swaggerHtml = `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -80,29 +85,47 @@ async function bootstrap() {
 </body>
 </html>`;
 
-  // Serve Swagger UI qua CDN scripts để tránh lỗi trắng trang trên Vercel.
-  const expressApp = app.getHttpAdapter().getInstance();
-  expressApp.get(['/api', '/api/'], (_req: Request, res: Response) => {
-    res.type('text/html').send(swaggerHtml);
-  });
+    // Serve Swagger UI qua CDN scripts
+    expressApp.get(['/api', '/api/'], (_req: Request, res: Response) => {
+      res.type('text/html').send(swaggerHtml);
+    });
 
-  // Redirect /docs to /api
-  expressApp.get('/docs', (_req: Request, res: Response) => {
-    res.redirect(308, '/api/');
-  });
-  expressApp.get('/docs/', (_req: Request, res: Response) => {
-    res.redirect(308, '/api/');
-  });
+    // Redirect /docs to /api
+    expressApp.get('/docs', (_req: Request, res: Response) => {
+      res.redirect(308, '/api/');
+    });
+    expressApp.get('/docs/', (_req: Request, res: Response) => {
+      res.redirect(308, '/api/');
+    });
 
-  // 4. Port cho Vercel
-  const port = process.env.PORT || 3000;
-  await app.listen(port, '0.0.0.0');
+    // Quan trọng nhất cho Vercel: Khởi tạo app mà không mở port listen
+    await app.init();
+    cachedServer = expressApp;
+  }
   
-  const url = await app.getUrl();
-  // Thay thế [::1] hoặc 127.0.0.1 bằng localhost để dễ click/copy trong terminal
-  const displayUrl = url.replace('[::1]', 'localhost').replace('127.0.0.1', 'localhost');
-  
-  console.log(`\n🚀 Application is running on: ${displayUrl}`);
-  console.log(`📝 Swagger UI available at: ${displayUrl}/api\n`);
+  return cachedServer;
 }
-void bootstrap();
+
+// 2. Phân luồng chạy: Môi trường Local (chạy bằng npm run start:dev)
+if (!process.env.VERCEL) {
+  // Fix warning Promise bằng cách bắt .then() và .catch() đàng hoàng
+  bootstrapServer()
+    .then((app) => {
+      const port = process.env.PORT || 3000;
+      app.listen(port, () => {
+        console.log(`\n🚀 Application is running on: http://localhost:${port}`);
+        console.log(`📝 Swagger UI available at: http://localhost:${port}/api\n`);
+      });
+    })
+    .catch((err) => {
+      console.error('❌ Failed to start server:', err);
+    });
+}
+
+// 3. Phân luồng chạy: Môi trường Vercel (Serverless Function)
+export default async function handler(req: Request, res: Response) {
+  // Đảm bảo app được khởi tạo xong trước khi nhận request
+  const app = await bootstrapServer();
+  // Giao request cho Express xử lý
+  return app(req, res);
+}
